@@ -40,15 +40,29 @@ const translations = {
 
     'story.eyebrow': 'Nuestra historia',
     'story.title': 'Cómo llegamos hasta aquí',
-    'story.1.date': 'Primavera de 2019',
+    'story.1.date': '1 de abril de 2022',
     'story.1.title': 'Nos conocimos',
-    'story.1.text': 'Un encuentro casual que lo cambió todo. (Edita este texto con vuestra historia.)',
-    'story.2.date': 'Verano de 2019',
-    'story.2.title': 'Nuestra primera cita',
-    'story.2.text': 'La primera de muchas. (Edita este texto con vuestra historia.)',
-    'story.3.date': 'Diciembre de 2024',
-    'story.3.title': 'La propuesta',
-    'story.3.text': 'Dijimos «sí» al resto de nuestras vidas. (Edita este texto con vuestra historia.)',
+    'story.1.text':
+      'Unos estudios en Japón que lo cambiaron todo. Nos conocimos en el aeropuerto de Madrid y, ese mismo día, empezamos nuestro primer viaje juntos: nada más y nada menos que a Japón, para cursar nuestros másteres de ingeniería en la Universidad de Keio, en Tokio.',
+    'story.2.date': 'Principios de mayo de 2022',
+    'story.2.title': 'De ruta por Kioto',
+    'story.2.text':
+      'Hacíamos turismo por Kioto. A última hora, una de las acompañantes del viaje se dio de baja y Alejandro entró en su lugar.',
+    'story.3.date': '10 de junio de 2022',
+    'story.3.title': 'Nuestra primera cita',
+    'story.3.text': 'Nuestra primera cita. La fiesta ayudó a dar el primer paso.',
+    'story.4.date': '2022 – 2023',
+    'story.4.title': 'Amor a distancia',
+    'story.4.text':
+      'Durante el año siguiente, Maca se quedó en Japón trabajando duro en su máster mientras Alejandro empezaba a establecerse en Dinamarca. Estuvimos saliendo a distancia (más o menos) durante diez meses.',
+    'story.5.date': '2023',
+    'story.5.title': 'Juntos en Dinamarca',
+    'story.5.text':
+      'Después, Maca se mudó a Dinamarca. Hemos vivido en Aarhus, Odense y Copenhague, y ya llevamos tres años viviendo juntos aquí.',
+    'story.6.date': '2026',
+    'story.6.title': 'Damos el paso',
+    'story.6.text':
+      'Por fin decidimos dar el paso juntos… ¡Esperamos que os haga tanta ilusión como a nosotros!',
 
     'about.eyebrow': 'Los novios',
     'about.title': 'Sobre nosotros',
@@ -130,15 +144,29 @@ const translations = {
 
     'story.eyebrow': 'Our story',
     'story.title': 'How we got here',
-    'story.1.date': 'Spring 2019',
+    'story.1.date': 'April 1, 2022',
     'story.1.title': 'We met',
-    'story.1.text': 'A chance encounter that changed everything. (Edit this text with your story.)',
-    'story.2.date': 'Summer 2019',
-    'story.2.title': 'Our first date',
-    'story.2.text': 'The first of many. (Edit this text with your story.)',
-    'story.3.date': 'December 2024',
-    'story.3.title': 'The proposal',
-    'story.3.text': 'We said “yes” to the rest of our lives. (Edit this text with your story.)',
+    'story.1.text':
+      "A master's adventure in Japan that changed everything. We met at Madrid airport and, that very same day, set off on our first trip together — none other than to Japan, to study our engineering master's degrees at Keio University in Tokyo.",
+    'story.2.date': 'Early May 2022',
+    'story.2.title': 'Exploring Kyoto',
+    'story.2.text':
+      "We were sightseeing around Kyoto. At the last minute, one of the trip's companions dropped out and Alejandro stepped in to take her place.",
+    'story.3.date': 'June 10, 2022',
+    'story.3.title': 'Our first date',
+    'story.3.text': 'Our first date. The party helped us take the first step.',
+    'story.4.date': '2022 – 2023',
+    'story.4.title': 'Long-distance love',
+    'story.4.text':
+      "Over the following year, Maca stayed in Japan working hard on her master's while Alejandro began settling in Denmark. We dated long-distance (more or less) for ten months.",
+    'story.5.date': '2023',
+    'story.5.title': 'Together in Denmark',
+    'story.5.text':
+      'Then Maca moved to Denmark. We have lived in Aarhus, Odense and Copenhagen, and we have now been living together here for three years.',
+    'story.6.date': '2026',
+    'story.6.title': 'Taking the leap',
+    'story.6.text':
+      'At last we decided to take the leap together… We hope it makes you as excited as it makes us!',
 
     'about.eyebrow': 'The couple',
     'about.title': 'About us',
@@ -221,15 +249,29 @@ const translations = {
 
     'story.eyebrow': 'Gure istorioa',
     'story.title': 'Nola iritsi ginen hona',
-    'story.1.date': '2019ko udaberria',
+    'story.1.date': '2022ko apirilaren 1a',
     'story.1.title': 'Ezagutu ginen',
-    'story.1.text': 'Dena aldatu zuen ustekabeko topaketa. (Editatu testu hau zuen istorioarekin.)',
-    'story.2.date': '2019ko uda',
-    'story.2.title': 'Gure lehen hitzordua',
-    'story.2.text': 'Askoren artean lehena. (Editatu testu hau zuen istorioarekin.)',
-    'story.3.date': '2024ko abendua',
-    'story.3.title': 'Eskaintza',
-    'story.3.text': '«Bai» esan genion gure bizitza osoari. (Editatu testu hau zuen istorioarekin.)',
+    'story.1.text':
+      'Japoniako master batek dena aldatu zuen. Madrilgo aireportuan ezagutu ginen eta, egun berean, gure lehen bidaia hasi genuen elkarrekin: Japoniara, ezta gutxiago ere, Tokioko Keio Unibertsitatean ingeniaritzako masterrak ikastera.',
+    'story.2.date': '2022ko maiatzaren hasiera',
+    'story.2.title': 'Kioton barrena',
+    'story.2.text':
+      'Kioton barrena genbiltzan turismoa egiten. Azken unean, bidaiako lagun batek baja eman zuen eta Alejandro sartu zen haren ordez.',
+    'story.3.date': '2022ko ekainaren 10a',
+    'story.3.title': 'Gure lehen hitzordua',
+    'story.3.text': 'Gure lehen hitzordua. Festak lehen urratsa ematen lagundu zigun.',
+    'story.4.date': '2022 – 2023',
+    'story.4.title': 'Urrutiko maitasuna',
+    'story.4.text':
+      'Hurrengo urtean, Maca Japonian geratu zen bere masterrean gogor lanean, eta Alejandro Danimarkan kokatzen hasi zen. Hamar hilabetez urrutitik ibili ginen (gutxi gorabehera).',
+    'story.5.date': '2023',
+    'story.5.title': 'Elkarrekin Danimarkan',
+    'story.5.text':
+      'Gero, Maca Danimarkara joan zen bizitzera. Aarhus, Odense eta Kopenhagen bizi izan gara, eta hiru urte daramatzagu hemen elkarrekin bizitzen.',
+    'story.6.date': '2026',
+    'story.6.title': 'Pausoa ematen',
+    'story.6.text':
+      'Azkenean, pausoa elkarrekin ematea erabaki dugu… Espero dugu zuei guri adina ilusio egitea!',
 
     'about.eyebrow': 'Ezkongaiak',
     'about.title': 'Guri buruz',
@@ -312,15 +354,29 @@ const translations = {
 
     'story.eyebrow': 'Nuestra movida',
     'story.title': 'Cómo llegamos hasta aquí, mi niño',
-    'story.1.date': 'Primavera de 2019',
+    'story.1.date': '1 de abril de 2022',
     'story.1.title': 'Nos conocimos',
-    'story.1.text': "Un encontronazo de casualidad que lo cambió to'. (Edita este texto con vuestra historia.)",
-    'story.2.date': 'Verano de 2019',
-    'story.2.title': 'La primera salidita',
-    'story.2.text': 'La primera de muchísimas, mi niña. (Edita este texto con vuestra historia.)',
-    'story.3.date': 'Diciembre de 2024',
-    'story.3.title': 'La pedida',
-    'story.3.text': "Dijimos que «sí» pa'l resto de nuestras vidas. (Edita este texto con vuestra historia.)",
+    'story.1.text':
+      "Unos estudios en Japón que lo cambiaron to', mi niño. Nos conocimos en el aeropuerto de Madrid y, ese mismo día, ya nos fuimos juntos de viaje: ¡na' menos que a Japón, a estudiar los másteres de ingeniería en la Universidad de Keio, en Tokio!",
+    'story.2.date': 'Primeritos de mayo de 2022',
+    'story.2.title': 'De paseo por Kioto',
+    'story.2.text':
+      'Andábamos de paseo por Kioto. A última hora una de las acompañantes del viaje se dio de baja y, agüita, Alejandro se metió en su lugar.',
+    'story.3.date': '10 de junio de 2022',
+    'story.3.title': 'La primera salidita',
+    'story.3.text': 'La primera salidita, mi niña. La fiesta ayudó a dar el primer pasito.',
+    'story.4.date': '2022 – 2023',
+    'story.4.title': 'Amor a distancia',
+    'story.4.text':
+      'Al año siguiente, Maca se quedó en Japón dándole duro al máster mientras Alejandro empezaba a asentarse en Dinamarca. Diez meses estuvimos saliendo a distancia (más o menos, chacho).',
+    'story.5.date': '2023',
+    'story.5.title': 'Juntos en Dinamarca',
+    'story.5.text':
+      "Después Maca se vino pa' Dinamarca. Hemos vivío en Aarhus, Odense y Copenhague, y ya llevamos tres añitos viviendo juntos aquí.",
+    'story.6.date': '2026',
+    'story.6.title': 'Damos el paso',
+    'story.6.text':
+      '¡Y al final nos decidimos a dar el paso juntos… Esperamos que les haga tanta ilusión como a nosotros, mi niño!',
 
     'about.eyebrow': 'Los novios',
     'about.title': 'Sobre nosotros dos',
@@ -403,15 +459,29 @@ const translations = {
 
     'story.eyebrow': '私たちの物語',
     'story.title': 'ここに至るまで',
-    'story.1.date': '2019年 春',
+    'story.1.date': '2022年4月1日',
     'story.1.title': '出会い',
-    'story.1.text': 'すべてを変えた偶然の出会い。（このテキストをお二人の物語に書き換えてください。）',
-    'story.2.date': '2019年 夏',
-    'story.2.title': '初めてのデート',
-    'story.2.text': '数えきれないデートの始まり。（このテキストをお二人の物語に書き換えてください。）',
-    'story.3.date': '2024年 12月',
-    'story.3.title': 'プロポーズ',
-    'story.3.text': '残りの人生を共にすると誓いました。（このテキストをお二人の物語に書き換えてください。）',
+    'story.1.text':
+      'すべてを変えた、日本での留学。マドリードの空港で出会い、その同じ日に二人で初めての旅へ出発しました。行き先はなんと日本。東京の慶應義塾大学で、工学の修士課程を学ぶためでした。',
+    'story.2.date': '2022年5月初旬',
+    'story.2.title': '京都めぐり',
+    'story.2.text':
+      '京都を観光していたときのこと。出発間際に参加者の一人がキャンセルし、その代わりにアレハンドロが加わりました。',
+    'story.3.date': '2022年6月10日',
+    'story.3.title': '初めてのデート',
+    'story.3.text': '初めてのデート。パーティーが最初の一歩を後押ししてくれました。',
+    'story.4.date': '2022年〜2023年',
+    'story.4.title': '遠距離恋愛',
+    'story.4.text':
+      'その後の一年間、マカは日本に残って修士課程に励み、アレハンドロはデンマークで生活を始めました。十か月ほど、遠距離で（だいたい）付き合っていました。',
+    'story.5.date': '2023年',
+    'story.5.title': 'デンマークで一緒に',
+    'story.5.text':
+      'そしてマカがデンマークへ。オーフス、オーデンセ、コペンハーゲンと暮らし、ここで一緒に暮らして三年になります。',
+    'story.6.date': '2026年',
+    'story.6.title': '決意',
+    'story.6.text':
+      'そしてついに、二人で次の一歩を踏み出すことに決めました…。私たちと同じくらい、皆さまにも喜んでいただけますように！',
 
     'about.eyebrow': '新郎新婦',
     'about.title': '私たちについて',
