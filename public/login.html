@@ -17,6 +17,12 @@
         <button type="button" class="login-lang-btn" data-lang-btn="es">ES</button>
         <span class="login-lang-sep">·</span>
         <button type="button" class="login-lang-btn" data-lang-btn="en">EN</button>
+        <span class="login-lang-sep">·</span>
+        <button type="button" class="login-lang-btn" data-lang-btn="eu">EU</button>
+        <span class="login-lang-sep">·</span>
+        <button type="button" class="login-lang-btn" data-lang-btn="can">CAN</button>
+        <span class="login-lang-sep">·</span>
+        <button type="button" class="login-lang-btn" data-lang-btn="ja">日本語</button>
       </div>
 
       <p class="eyebrow" data-i18n="eyebrow">Nos casamos</p>
@@ -59,11 +65,35 @@
           submit: 'Enter',
           error: 'Incorrect password. Please try again.',
         },
+        eu: {
+          eyebrow: 'Ezkontzen gara',
+          invite: 'Gonbidapen hau pribatua da.<br />Sartzeko, idatzi pasahitza.',
+          password: 'Pasahitza',
+          submit: 'Sartu',
+          error: 'Pasahitz okerra. Saiatu berriro.',
+        },
+        can: {
+          eyebrow: "¡Nos vamo' a casar!",
+          invite: "Esta invitación es privada, mi niño.<br />Mete la contraseña pa' entrar.",
+          password: 'Contraseña',
+          submit: "¡Pa' dentro!",
+          error: 'Ños, esa contraseña no es. Prueba otra vez.',
+        },
+        ja: {
+          eyebrow: '結婚します',
+          invite: 'こちらは限定のご招待です。<br />パスワードを入力してお進みください。',
+          password: 'パスワード',
+          submit: '入る',
+          error: 'パスワードが正しくありません。もう一度お試しください。',
+        },
       };
 
       var lang = null;
       try { lang = localStorage.getItem('boda_lang'); } catch (e) {}
-      if (!lang) lang = (navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+      if (!lang) {
+        var nl = (navigator.language || 'es').toLowerCase();
+        lang = nl.indexOf('eu') === 0 ? 'eu' : nl.indexOf('ja') === 0 ? 'ja' : nl.indexOf('es') === 0 ? 'es' : 'en';
+      }
       if (!T[lang]) lang = 'es';
 
       function apply() {
