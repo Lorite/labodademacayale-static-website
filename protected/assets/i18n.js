@@ -70,12 +70,6 @@ const translations = {
     'when.party': 'Fiesta · DJ y barra libre',
     'when.directions': 'Cómo llegar',
 
-    'details.dressTitle': 'Código de vestimenta',
-    'details.dressText': 'Etiqueta formal. Los tonos tierra y dorados son bienvenidos.',
-    'details.giftTitle': 'Mesa de regalos',
-    'details.giftText':
-      'Vuestra presencia es nuestro mejor regalo. Y si queréis tener un detalle con nosotros, justo aquí abajo os contamos cómo. <a href="#regalo">Ver más &#8595;</a>',
-
     'gift.eyebrow': 'Un detalle especial',
     'gift.title': 'Regalo de boda',
     'gift.intro':
@@ -160,12 +154,6 @@ const translations = {
     'when.banquet': 'Dinner',
     'when.party': 'Party · DJ & open bar',
     'when.directions': 'Get directions',
-
-    'details.dressTitle': 'Dress code',
-    'details.dressText': 'Formal attire. Earth and gold tones are most welcome.',
-    'details.giftTitle': 'Gifts',
-    'details.giftText':
-      'Your presence is our greatest gift. And if you would like to give us something, we explain how just below. <a href="#regalo">See more &#8595;</a>',
 
     'gift.eyebrow': 'A special detail',
     'gift.title': 'Wedding gift',

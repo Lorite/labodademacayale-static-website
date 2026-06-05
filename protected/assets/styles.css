@@ -388,30 +388,6 @@ section { padding: 96px 24px; }
 }
 .venue__map:hover { color: var(--ink); }
 
-/* ---------- details (dress + gifts) ---------- */
-.details { max-width: var(--max); margin: 0 auto; }
-.details__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-.detail-card {
-  text-align: center;
-  padding: 44px 32px;
-  border: 1px solid var(--gold-light);
-  border-radius: 3px;
-  background: var(--ivory);
-}
-.detail-card h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-.detail-card p { color: var(--ink-soft); font-size: 15px; }
-.detail-card p a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-light); }
-.detail-card p a:hover { color: var(--ink); }
-
 /* ---------- gift / money ---------- */
 .gift {
   background: var(--ink);
@@ -591,6 +567,5 @@ section { padding: 96px 24px; }
   .timeline__item:nth-child(even) .timeline__media { order: 0; }
   .when__grid { grid-template-columns: 1fr; }
   .gallery__grid { grid-template-columns: repeat(2, 1fr); }
-  .details__grid { grid-template-columns: 1fr; }
   .countdown__grid { grid-template-columns: repeat(2, 1fr); }
 }
