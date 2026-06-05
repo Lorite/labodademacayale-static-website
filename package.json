@@ -1,17 +1,21 @@
 {
   "name": "labodademacayale-static-website",
   "version": "1.0.0",
-  "description": "A password-protected wedding website",
-  "main": "src/index.html",
+  "description": "Password-protected wedding website for Maca & Ale",
+  "main": "server.js",
   "scripts": {
-    "dev": "echo 'Development server setup needed'",
-    "build": "echo 'Build script setup needed'",
-    "deploy": "echo 'Deploy script setup needed'"
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "keywords": [
     "wedding",
     "website"
   ],
-  "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }

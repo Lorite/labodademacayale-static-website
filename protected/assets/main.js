@@ -1,0 +1,103 @@
+'use strict';
+
+// ---------- Countdown ----------
+(function countdown() {
+  const root = document.getElementById('countdown');
+  if (!root) return;
+  const target = new Date(root.dataset.date).getTime();
+  const units = {
+    days: root.querySelector('[data-unit="days"]'),
+    hours: root.querySelector('[data-unit="hours"]'),
+    minutes: root.querySelector('[data-unit="minutes"]'),
+    seconds: root.querySelector('[data-unit="seconds"]'),
+  };
+
+  const pad = (n) => String(n).padStart(2, '0');
+
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      Object.values(units).forEach((el) => el && (el.textContent = '00'));
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    if (units.days) units.days.textContent = d;
+    if (units.hours) units.hours.textContent = pad(h);
+    if (units.minutes) units.minutes.textContent = pad(m);
+    if (units.seconds) units.seconds.textContent = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+// ---------- Background images (only set when a real file exists) ----------
+// Photos live in the gitignored protected/images/ folder. If a file is
+// missing we keep the elegant gradient placeholder instead of a broken image.
+(function lazyBackgrounds() {
+  const cells = document.querySelectorAll('[data-img]');
+  cells.forEach((cell) => {
+    const src = cell.dataset.img;
+    if (!src) return;
+    const probe = new Image();
+    probe.onload = () => {
+      cell.style.backgroundImage = `url("${src}")`;
+    };
+    probe.src = src;
+  });
+})();
+
+// ---------- Reveal on scroll ----------
+(function revealOnScroll() {
+  const targets = document.querySelectorAll(
+    '.timeline__item, .event, .gallery__cell, .profile, .detail-card, .section-title'
+  );
+  targets.forEach((el) => el.classList.add('reveal'));
+
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  targets.forEach((el) => io.observe(el));
+})();
+
+// ---------- RSVP via email (no backend / no data stored) ----------
+(function rsvp() {
+  const form = document.getElementById('rsvp-form');
+  if (!form) return;
+
+  // Change this to the couple's email address.
+  const TO = 'hola@labodademacayale.com';
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = (data.get('name') || '').toString().trim();
+    const guests = (data.get('guests') || '0').toString().trim();
+    const attend = (data.get('attend') || '').toString();
+    const note = (data.get('note') || '').toString().trim();
+
+    const subject = `Confirmación de asistencia — ${name || 'Invitado'}`;
+    const body =
+      `Nombre: ${name}\n` +
+      `Acompañantes: ${guests}\n` +
+      `Asistencia: ${attend}\n` +
+      `Mensaje: ${note || '—'}`;
+
+    window.location.href =
+      `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+})();

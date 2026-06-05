@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>La Boda de Macayale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/login.css" />
+</head>
+<body>
+  <main class="login-wrap">
+    <section class="login-card">
+      <p class="eyebrow">Nos casamos</p>
+      <h1 class="couple">Maca <span class="amp">&amp;</span> Ale</h1>
+      <div class="rule"><span></span>&#10070;<span></span></div>
+      <p class="invite">Esta invitación es privada.<br />Introduce la contraseña para entrar.</p>
+
+      <form method="POST" action="/login" class="login-form" autocomplete="off">
+        <label for="password" class="sr-only">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Contraseña"
+          required
+          autofocus
+        />
+        <button type="submit">Entrar</button>
+      </form>
+
+      <p id="error" class="error" role="alert" hidden>Contraseña incorrecta. Inténtalo de nuevo.</p>
+    </section>
+  </main>
+
+  <script>
+    // Show an error message if the server redirected back with ?error=1.
+    if (new URLSearchParams(location.search).has('error')) {
+      var el = document.getElementById('error');
+      if (el) el.hidden = false;
+    }
+  </script>
+</body>
+</html>
