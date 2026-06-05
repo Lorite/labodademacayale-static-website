@@ -35,6 +35,27 @@ Injected values: `GIFT_IBAN`, `GIFT_HOLDER`, `CEREMONY_NAME`,
 `CEREMONY_ADDRESS`, `CEREMONY_MAPS_URL`, `CEREMONY_SITE_URL`, `PARTY_NAME`,
 `PARTY_ADDRESS`, `PARTY_MAPS_URL`, `PARTY_SITE_URL`.
 
+## Collecting RSVPs
+
+Guests confirm through the form at the bottom of the site. On submit, the browser
+`POST`s the reply to `/rsvp` (behind the login gate), and the server appends it as
+one JSON line to the file named by `RSVP_FILE`. No email client is involved, so it
+works reliably for everyone — and every reply is captured in one place.
+
+Each reply lists the main guest plus a row per companion — name, whether they're a
+child, and that person's allergies/intolerances.
+
+**View the responses** at `/rsvps?key=YOUR_RSVP_ADMIN_KEY` (you must also be logged
+in). It shows totals — replies, attending, not attending, total head-count and
+children — plus a per-guest table (companions and their allergies). The
+**Download CSV** button exports **one row per person** (main guest and each
+companion, with adult/child and their allergies) — ready to hand to the caterer.
+If `RSVP_ADMIN_KEY` is left unset, the admin view is disabled (returns 404).
+
+> **Persistence on Coolify:** the file lives outside the repo, so attach a
+> **persistent volume** (e.g. mounted at `/data`) and set `RSVP_FILE=/data/rsvps.jsonl`.
+> Without a volume, redeploys would wipe the confirmations.
+
 ## Languages (ES / EN)
 
 UI text is translated client-side in [protected/assets/i18n.js](protected/assets/i18n.js).
@@ -81,7 +102,9 @@ supplies the variables directly.
 2. Under **Environment Variables**, set everything from `.env.example` with your
    real values — at minimum `SITE_PASSWORD`, `SESSION_SECRET`
    (`openssl rand -hex 32`), `NODE_ENV=production`, plus the gift and venue
-   values you want shown.
+   values you want shown. To collect RSVPs, also set `RSVP_ADMIN_KEY`
+   (`openssl rand -hex 16`) and attach a **persistent volume** with
+   `RSVP_FILE` pointing inside it (see *Collecting RSVPs* above).
 3. Set the **port** to `3000`, attach your domain, and let Coolify handle HTTPS.
 4. Deploy. 🎉
 
@@ -98,7 +121,7 @@ Until a photo is present, the site shows a tasteful gold gradient placeholder.
 - **Wording / translations** — edit [protected/assets/i18n.js](protected/assets/i18n.js).
 - **Schedule times / structure** — edit [protected/index.html](protected/index.html).
 - **Countdown date** — `data-date` on the countdown section.
-- **RSVP email** — `TO` constant in [protected/assets/main.js](protected/assets/main.js).
+- **RSVP storage** — see *Collecting RSVPs* below; data lives in `RSVP_FILE`.
 - **Colors / fonts** — CSS variables at the top of
   [protected/assets/styles.css](protected/assets/styles.css).
 

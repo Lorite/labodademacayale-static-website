@@ -499,6 +499,67 @@ section { padding: 96px 24px; }
 }
 .rsvp__intro { text-align: center; color: var(--ink-soft); margin-bottom: 36px; }
 .rsvp__form { display: flex; flex-direction: column; gap: 20px; }
+.rsvp__cancel {
+  margin: 0;
+  padding: 12px 16px;
+  background: rgba(184, 148, 63, 0.07);
+  border: 1px solid var(--gold-light);
+  border-radius: 2px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+.companions { display: flex; flex-direction: column; gap: 14px; }
+.companions:empty { display: none; }
+.companion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--gold-light);
+  border-radius: 3px;
+  background: rgba(184, 148, 63, 0.04);
+}
+.companion__head { display: flex; align-items: center; justify-content: space-between; }
+.companion__title {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.companion__remove {
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.2s;
+}
+.companion__remove:hover { color: #b0553c; }
+.companion__kid {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--ink);
+}
+.rsvp__add {
+  align-self: flex-start;
+  padding: 10px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-light);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.rsvp__add:hover { background: rgba(184, 148, 63, 0.08); border-color: var(--gold); }
 .field { display: flex; flex-direction: column; gap: 7px; }
 .field label, .field legend {
   font-size: 12px;
@@ -551,6 +612,16 @@ section { padding: 96px 24px; }
   box-shadow: 0 12px 26px -12px rgba(184, 148, 63, 0.7);
 }
 .rsvp__hint { text-align: center; font-size: 12px; color: var(--ink-soft); }
+.rsvp__status {
+  text-align: center;
+  font-size: 14px;
+  min-height: 1.2em;
+  margin: 2px 0 0;
+}
+.rsvp__status.is-sending { color: var(--ink-soft); }
+.rsvp__status.is-ok { color: #5d7d54; font-size: 20px; font-family: 'Cormorant Garamond', serif; }
+.rsvp__status.is-error { color: #b0553c; }
+.rsvp__form button:disabled { opacity: 0.6; cursor: default; transform: none; box-shadow: none; }
 
 /* ---------- footer ---------- */
 .footer {

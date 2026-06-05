@@ -12,6 +12,10 @@ secrets.json
 *.iban
 banking/
 
+# ---- Guest RSVP submissions (kept off the repo) ----
+data/
+*.jsonl
+
 # ---- Private photos & media ----
 # Keep family photos off the public repo. Decorative styling is done in CSS,
 # so the committed site still looks complete without any of these.

@@ -124,33 +124,79 @@
   });
 })();
 
-// ---------- RSVP via email (no backend / no data stored) ----------
+// ---------- RSVP (saved server-side at /rsvp; no email client needed) ----------
 (function rsvp() {
   const form = document.getElementById('rsvp-form');
   if (!form) return;
 
-  // Change this to the couple's email address.
-  const TO = 'hola@labodademacayale.com';
-
+  const statusEl = document.getElementById('rsvp-status');
+  const button = form.querySelector('button[type="submit"]');
+  const companionsEl = document.getElementById('companions');
+  const addBtn = document.getElementById('add-companion');
+  const template = document.getElementById('companion-template');
   const t = (key, fallback) => (window.i18n ? window.i18n.t(key) : null) || fallback;
 
-  form.addEventListener('submit', (e) => {
+  // Append a fresh companion row (name + "is child" + allergies + remove).
+  function addCompanion() {
+    const row = template.content.firstElementChild.cloneNode(true);
+    row.querySelector('.companion__remove').addEventListener('click', () => row.remove());
+    companionsEl.appendChild(row);
+    if (window.i18n) window.i18n.apply(); // localize the new row's labels
+    const nameInput = row.querySelector('[name="companion-name"]');
+    if (nameInput) nameInput.focus();
+  }
+
+  if (addBtn && template && companionsEl) {
+    addBtn.addEventListener('click', addCompanion);
+  }
+
+  // Read every companion row into a list, dropping any left without a name.
+  function collectCompanions() {
+    if (!companionsEl) return [];
+    return Array.from(companionsEl.querySelectorAll('.companion'))
+      .map((row) => ({
+        name: (row.querySelector('[name="companion-name"]').value || '').trim(),
+        kid: row.querySelector('[name="companion-kid"]').checked,
+        intolerances: (row.querySelector('[name="companion-intol"]').value || '').trim(),
+      }))
+      .filter((c) => c.name !== '');
+  }
+
+  function setStatus(kind, message) {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.className = 'rsvp__status' + (kind ? ' is-' + kind : '');
+  }
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(form);
-    const name = (data.get('name') || '').toString().trim();
-    const guests = (data.get('guests') || '0').toString().trim();
-    const attendRaw = (data.get('attend') || '').toString();
-    const attend = attendRaw === 'no' ? t('rsvp.no', 'No') : t('rsvp.yes', 'Sí');
-    const note = (data.get('note') || '').toString().trim();
+    const payload = {
+      name: (data.get('name') || '').toString().trim(),
+      intolerances: (data.get('intolerances') || '').toString().trim(),
+      attend: (data.get('attend') || 'yes').toString(),
+      companions: collectCompanions(),
+      note: (data.get('note') || '').toString().trim(),
+      lang: window.i18n ? window.i18n.lang : 'es',
+    };
 
-    const subject = `${t('rsvp.mailSubject', 'Confirmación de asistencia')} — ${name || '?'}`;
-    const body =
-      `${t('rsvp.mailName', 'Nombre')}: ${name}\n` +
-      `${t('rsvp.mailGuests', 'Acompañantes')}: ${guests}\n` +
-      `${t('rsvp.mailAttend', 'Asistencia')}: ${attend}\n` +
-      `${t('rsvp.mailNote', 'Mensaje')}: ${note || '—'}`;
+    button.disabled = true;
+    setStatus('sending', t('rsvp.sending', 'Enviando…'));
 
-    window.location.href =
-      `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      const res = await fetch('/rsvp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('rsvp failed: ' + res.status);
+      setStatus('ok', t('rsvp.success', '¡Gracias! Hemos recibido tu confirmación.'));
+      form.reset();
+      if (companionsEl) companionsEl.innerHTML = ''; // reset() leaves added rows; clear them
+    } catch (err) {
+      setStatus('error', t('rsvp.error', 'No se pudo enviar. Inténtalo de nuevo en un momento.'));
+    } finally {
+      button.disabled = false;
+    }
   });
 })();
