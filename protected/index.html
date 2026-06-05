@@ -126,40 +126,46 @@
   <section class="when" id="cuando">
     <p class="section-eyebrow" data-i18n="when.eyebrow">El gran día</p>
     <h2 class="section-title" data-i18n="when.title">Cuándo &amp; Dónde</h2>
-    <div class="when__grid">
+    <div class="venues">
 
-      <!-- Ceremonia (datos de lugar inyectados desde variables de entorno) -->
-      <article class="venue">
-        <span class="event__icon">&#9962;</span>
-        <p class="venue__kicker" data-i18n="when.ceremonyKicker">La ceremonia</p>
-        <h3 class="venue__name">
-          <a href="{{CEREMONY_SITE_URL}}" target="_blank" rel="noopener">{{CEREMONY_NAME}}</a>
-        </h3>
-        <p class="venue__addr">{{CEREMONY_ADDRESS}}</p>
-        <ul class="venue__schedule">
-          <li>
-            <span class="venue__time">17:30 &ndash; 18:30</span>
-            <span class="venue__act" data-i18n="when.ceremonyAct">Ceremonia religiosa</span>
-          </li>
-        </ul>
-        <a class="venue__map" href="{{CEREMONY_MAPS_URL}}" target="_blank" rel="noopener" data-i18n="when.directions">Cómo llegar</a>
+      <!-- Ceremonia: fila completa (datos de lugar inyectados desde env vars) -->
+      <article class="vrow">
+        <div class="vrow__media" data-img="images/ceremony.jpg" role="img" aria-label="Iglesia"></div>
+        <div class="vrow__body">
+          <span class="event__icon">&#9962;</span>
+          <p class="venue__kicker" data-i18n="when.ceremonyKicker">La ceremonia</p>
+          <h3 class="venue__name">
+            <a href="{{CEREMONY_SITE_URL}}" target="_blank" rel="noopener">{{CEREMONY_NAME}}</a>
+          </h3>
+          <p class="venue__addr">{{CEREMONY_ADDRESS}}</p>
+          <ul class="venue__schedule">
+            <li>
+              <span class="venue__time">17:30 &ndash; 18:30</span>
+              <span class="venue__act" data-i18n="when.ceremonyAct">Ceremonia religiosa</span>
+            </li>
+          </ul>
+          <a class="venue__map" href="{{CEREMONY_MAPS_URL}}" target="_blank" rel="noopener" data-i18n="when.directions">Cómo llegar</a>
+        </div>
       </article>
 
-      <!-- Celebración: todo en la misma finca, agrupado -->
-      <article class="venue">
-        <span class="event__icon">&#129346;</span>
-        <p class="venue__kicker" data-i18n="when.celebrationKicker">La celebración</p>
-        <h3 class="venue__name">
-          <a href="{{PARTY_SITE_URL}}" target="_blank" rel="noopener">{{PARTY_NAME}}</a>
-        </h3>
-        <p class="venue__addr">{{PARTY_ADDRESS}}</p>
-        <ul class="venue__schedule">
-          <li><span class="venue__time">19:00 &ndash; 19:30</span><span class="venue__act" data-i18n="when.reception">Recepción</span></li>
-          <li><span class="venue__time">19:30 &ndash; 21:00</span><span class="venue__act" data-i18n="when.cocktail">Cóctel</span></li>
-          <li><span class="venue__time">21:00 &ndash; 23:00</span><span class="venue__act" data-i18n="when.banquet">Banquete</span></li>
-          <li><span class="venue__time">23:00 &ndash; 03:00</span><span class="venue__act" data-i18n="when.party">Fiesta · DJ y barra libre</span></li>
-        </ul>
-        <a class="venue__map" href="{{PARTY_MAPS_URL}}" target="_blank" rel="noopener" data-i18n="when.directions">Cómo llegar</a>
+      <!-- Celebración: fila completa, imagen al otro lado, finca agrupada -->
+      <article class="vrow vrow--reverse">
+        <div class="vrow__media" data-img="images/finca.jpg" role="img" aria-label="Finca"></div>
+        <div class="vrow__body">
+          <span class="event__icon">&#129346;</span>
+          <p class="venue__kicker" data-i18n="when.celebrationKicker">La celebración</p>
+          <h3 class="venue__name">
+            <a href="{{PARTY_SITE_URL}}" target="_blank" rel="noopener">{{PARTY_NAME}}</a>
+          </h3>
+          <p class="venue__addr">{{PARTY_ADDRESS}}</p>
+          <ul class="venue__schedule">
+            <li><span class="venue__time">19:00 &ndash; 19:30</span><span class="venue__act" data-i18n="when.reception">Recepción</span></li>
+            <li><span class="venue__time">19:30 &ndash; 21:00</span><span class="venue__act" data-i18n="when.cocktail">Cóctel</span></li>
+            <li><span class="venue__time">21:00 &ndash; 23:00</span><span class="venue__act" data-i18n="when.banquet">Banquete</span></li>
+            <li><span class="venue__time">23:00 &ndash; 03:00</span><span class="venue__act" data-i18n="when.party">Fiesta · DJ y barra libre</span></li>
+          </ul>
+          <a class="venue__map" href="{{PARTY_MAPS_URL}}" target="_blank" rel="noopener" data-i18n="when.directions">Cómo llegar</a>
+        </div>
       </article>
 
     </div>

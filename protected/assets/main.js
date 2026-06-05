@@ -52,7 +52,7 @@
 // ---------- Reveal on scroll ----------
 (function revealOnScroll() {
   const targets = document.querySelectorAll(
-    '.timeline__item, .venue, .gallery__cell, .profile, .section-title'
+    '.timeline__item, .vrow, .gallery__cell, .profile, .section-title'
   );
   targets.forEach((el) => el.classList.add('reveal'));
 

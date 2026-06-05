@@ -5,6 +5,8 @@ picks them up automatically:
 
 | File              | Where it appears            |
 |-------------------|-----------------------------|
+| `ceremony.jpg`    | When & Where — ceremony row |
+| `finca.jpg`       | When & Where — celebration  |
 | `historia-1.jpg`  | Love story — first milestone|
 | `historia-2.jpg`  | Love story — second         |
 | `historia-3.jpg`  | Love story — third          |
