@@ -355,6 +355,95 @@ section { padding: 96px 24px; }
   margin-bottom: 10px;
 }
 .detail-card p { color: var(--ink-soft); font-size: 15px; }
+.detail-card p a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-light); }
+.detail-card p a:hover { color: var(--ink); }
+
+/* ---------- gift / money ---------- */
+.gift {
+  background: var(--ink);
+  color: #fff;
+  text-align: center;
+}
+.gift .section-eyebrow { color: var(--gold-soft); }
+.gift .section-title { color: #fff; margin-bottom: 24px; }
+.gift__intro {
+  max-width: 620px;
+  margin: 0 auto 44px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 16px;
+}
+.gift__card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(231, 214, 176, 0.32);
+  border-radius: 4px;
+  padding: 44px 32px;
+}
+.gift__icon { font-size: 34px; display: block; margin-bottom: 16px; }
+.gift__label {
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 20px;
+}
+.gift__iban {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.gift__iban code {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 4vw, 28px);
+  letter-spacing: 0.06em;
+  color: var(--gold-light);
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(231, 214, 176, 0.28);
+  border-radius: 3px;
+  padding: 14px 16px;
+  word-break: break-all;
+}
+.gift__copy {
+  flex: 0 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+  border: none;
+  border-radius: 3px;
+  padding: 0 18px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.25s;
+}
+.gift__copy:hover { transform: translateY(-1px); box-shadow: 0 10px 22px -12px rgba(184, 148, 63, 0.8); }
+.gift__copy.is-copied { background: #5d7d54; color: #fff; }
+.gift__meta { margin: 0 auto 18px; max-width: 360px; }
+.gift__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 9px 2px;
+  border-bottom: 1px dashed rgba(231, 214, 176, 0.22);
+  font-size: 14px;
+}
+.gift__row dt { color: rgba(255, 255, 255, 0.6); letter-spacing: 0.08em; }
+.gift__row dd { color: #fff; text-align: right; word-break: break-word; }
+.gift__thanks {
+  margin-top: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--gold-light);
+}
+.gift__iban code.is-empty { color: rgba(255,255,255,0.5); font-style: italic; }
 
 /* ---------- rsvp ---------- */
 .rsvp {

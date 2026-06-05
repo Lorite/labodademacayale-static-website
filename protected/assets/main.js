@@ -74,6 +74,52 @@
   targets.forEach((el) => io.observe(el));
 })();
 
+// ---------- Gift / IBAN (value injected server-side from env var) ----------
+(function gift() {
+  // Hide optional rows (holder, BIC) that the server left blank.
+  document.querySelectorAll('.gift__row[data-optional]').forEach((row) => {
+    const dd = row.querySelector('dd');
+    if (!dd || dd.textContent.trim() === '') row.hidden = true;
+  });
+
+  const ibanEl = document.getElementById('iban-value');
+  const copyBtn = document.getElementById('iban-copy');
+  if (!ibanEl || !copyBtn) return;
+
+  const iban = ibanEl.textContent.trim();
+
+  // If no IBAN is configured yet, show a friendly note and disable copying.
+  if (iban === '') {
+    ibanEl.textContent = 'Disponible próximamente';
+    ibanEl.classList.add('is-empty');
+    copyBtn.disabled = true;
+    copyBtn.style.display = 'none';
+    return;
+  }
+
+  copyBtn.addEventListener('click', async () => {
+    const plain = iban.replace(/\s+/g, ''); // copy without spaces for easy pasting
+    try {
+      await navigator.clipboard.writeText(plain);
+    } catch (err) {
+      // Fallback for browsers without the async clipboard API.
+      const tmp = document.createElement('textarea');
+      tmp.value = plain;
+      document.body.appendChild(tmp);
+      tmp.select();
+      document.execCommand('copy');
+      document.body.removeChild(tmp);
+    }
+    const original = copyBtn.textContent;
+    copyBtn.textContent = '¡Copiado!';
+    copyBtn.classList.add('is-copied');
+    setTimeout(() => {
+      copyBtn.textContent = original;
+      copyBtn.classList.remove('is-copied');
+    }, 1800);
+  });
+})();
+
 // ---------- RSVP via email (no backend / no data stored) ----------
 (function rsvp() {
   const form = document.getElementById('rsvp-form');

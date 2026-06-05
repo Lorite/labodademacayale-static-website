@@ -10,8 +10,11 @@
  *   SESSION_SECRET  random string used to sign the session cookie
  *   PORT            port to listen on (default 3000)
  *   SESSION_HOURS   how long a login stays valid (default 720 = 30 days)
+ *   GIFT_IBAN       bank IBAN for wedding gifts (injected at serve time)
+ *   GIFT_HOLDER     account holder name (optional)
  */
 
+const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const express = require('express');
@@ -23,6 +26,10 @@ const SITE_PASSWORD = process.env.SITE_PASSWORD;
 const SESSION_SECRET = process.env.SESSION_SECRET;
 const SESSION_MS = (Number(process.env.SESSION_HOURS) || 720) * 60 * 60 * 1000;
 const COOKIE_NAME = 'boda_session';
+
+// Gift / bank details — supplied via env vars, never committed to the repo.
+const GIFT_IBAN = process.env.GIFT_IBAN || '';
+const GIFT_HOLDER = process.env.GIFT_HOLDER || '';
 
 if (!SITE_PASSWORD || !SESSION_SECRET) {
   console.error(
@@ -91,6 +98,26 @@ function isAuthenticated(req) {
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const PROTECTED_DIR = path.join(__dirname, 'protected');
 
+// Load the site once at startup; gift details are injected per request so the
+// IBAN only ever exists in memory from an env var, never on disk in the repo.
+const INDEX_TEMPLATE = fs.readFileSync(path.join(PROTECTED_DIR, 'index.html'), 'utf8');
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }[c]));
+}
+
+function renderIndex(res) {
+  const html = INDEX_TEMPLATE.replace(/\{\{GIFT_IBAN\}\}/g, escapeHtml(GIFT_IBAN))
+    .replace(/\{\{GIFT_HOLDER\}\}/g, escapeHtml(GIFT_HOLDER));
+  res.type('html').send(html);
+}
+
 // Public assets needed by the login page (css/fonts/etc.)
 app.use('/public', express.static(PUBLIC_DIR, { redirect: false }));
 
@@ -125,14 +152,15 @@ app.use((req, res, next) => {
   res.redirect('/login');
 });
 
-app.use(express.static(PROTECTED_DIR, { redirect: false, extensions: ['html'] }));
+// Serve the homepage through renderIndex (never let static serve it raw, or the
+// {{GIFT_IBAN}} placeholder would leak unrendered).
+app.get(['/', '/index.html'], (req, res) => renderIndex(res));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(PROTECTED_DIR, 'index.html'));
-});
+app.use(express.static(PROTECTED_DIR, { redirect: false, index: false }));
 
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(PROTECTED_DIR, 'index.html'));
+  res.status(404);
+  renderIndex(res);
 });
 
 app.listen(PORT, () => {
