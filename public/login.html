@@ -13,34 +13,95 @@
 <body>
   <main class="login-wrap">
     <section class="login-card">
-      <p class="eyebrow">Nos casamos</p>
+      <div class="login-lang" role="group" aria-label="Idioma / Language">
+        <button type="button" class="login-lang-btn" data-lang-btn="es">ES</button>
+        <span class="login-lang-sep">·</span>
+        <button type="button" class="login-lang-btn" data-lang-btn="en">EN</button>
+      </div>
+
+      <p class="eyebrow" data-i18n="eyebrow">Nos casamos</p>
       <h1 class="couple">Maca <span class="amp">&amp;</span> Ale</h1>
       <div class="rule"><span></span>&#10070;<span></span></div>
-      <p class="invite">Esta invitación es privada.<br />Introduce la contraseña para entrar.</p>
+      <p class="invite" data-i18n-html="invite">Esta invitación es privada.<br />Introduce la contraseña para entrar.</p>
 
       <form method="POST" action="/login" class="login-form" autocomplete="off">
-        <label for="password" class="sr-only">Contraseña</label>
+        <label for="password" class="sr-only" data-i18n="password">Contraseña</label>
         <input
           type="password"
           id="password"
           name="password"
           placeholder="Contraseña"
+          data-i18n-placeholder="password"
           required
           autofocus
         />
-        <button type="submit">Entrar</button>
+        <button type="submit" data-i18n="submit">Entrar</button>
       </form>
 
-      <p id="error" class="error" role="alert" hidden>Contraseña incorrecta. Inténtalo de nuevo.</p>
+      <p id="error" class="error" role="alert" hidden data-i18n="error">Contraseña incorrecta. Inténtalo de nuevo.</p>
     </section>
   </main>
 
   <script>
-    // Show an error message if the server redirected back with ?error=1.
-    if (new URLSearchParams(location.search).has('error')) {
-      var el = document.getElementById('error');
-      if (el) el.hidden = false;
-    }
+    (function () {
+      var T = {
+        es: {
+          eyebrow: 'Nos casamos',
+          invite: 'Esta invitación es privada.<br />Introduce la contraseña para entrar.',
+          password: 'Contraseña',
+          submit: 'Entrar',
+          error: 'Contraseña incorrecta. Inténtalo de nuevo.',
+        },
+        en: {
+          eyebrow: "We're getting married",
+          invite: 'This invitation is private.<br />Enter the password to continue.',
+          password: 'Password',
+          submit: 'Enter',
+          error: 'Incorrect password. Please try again.',
+        },
+      };
+
+      var lang = null;
+      try { lang = localStorage.getItem('boda_lang'); } catch (e) {}
+      if (!lang) lang = (navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+      if (!T[lang]) lang = 'es';
+
+      function apply() {
+        var dict = T[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          var v = dict[el.getAttribute('data-i18n')];
+          if (v != null) el.textContent = v;
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+          var v = dict[el.getAttribute('data-i18n-html')];
+          if (v != null) el.innerHTML = v;
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+          var v = dict[el.getAttribute('data-i18n-placeholder')];
+          if (v != null) el.setAttribute('placeholder', v);
+        });
+        document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+          b.classList.toggle('is-active', b.getAttribute('data-lang-btn') === lang);
+        });
+      }
+
+      document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          lang = b.getAttribute('data-lang-btn');
+          try { localStorage.setItem('boda_lang', lang); } catch (e) {}
+          apply();
+        });
+      });
+
+      // Show the error message if the server redirected back with ?error=1.
+      if (new URLSearchParams(location.search).has('error')) {
+        var err = document.getElementById('error');
+        if (err) err.hidden = false;
+      }
+
+      apply();
+    })();
   </script>
 </body>
 </html>

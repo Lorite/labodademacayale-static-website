@@ -115,6 +115,22 @@ section { padding: 96px 24px; }
   transition: background 0.2s, color 0.2s;
 }
 .nav__logout:hover { background: var(--gold); color: #fff; }
+.nav__right { display: flex; align-items: center; gap: 16px; }
+.nav__lang { display: flex; align-items: center; gap: 6px; }
+.nav__lang-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  background: none;
+  border: none;
+  padding: 2px 2px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nav__lang-btn:hover { color: var(--gold); }
+.nav__lang-btn.is-active { color: var(--gold); font-weight: 500; text-decoration: underline; text-underline-offset: 4px; }
+.nav__lang-sep { color: var(--gold-light); font-size: 11px; }
 
 /* ---------- hero ---------- */
 .hero {
@@ -296,34 +312,71 @@ section { padding: 96px 24px; }
 .when { background: var(--ivory-deep); }
 .when__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  max-width: var(--max);
+  max-width: 860px;
   margin: 0 auto;
+  align-items: stretch;
 }
-.event {
+.event__icon { font-size: 30px; display: block; margin-bottom: 14px; }
+
+.venue {
+  display: flex;
+  flex-direction: column;
   background: #fff;
   border: 1px solid var(--gold-light);
   border-radius: 3px;
-  padding: 40px 28px;
+  padding: 40px 30px;
   text-align: center;
 }
-.event__icon { font-size: 30px; display: block; margin-bottom: 14px; }
-.event h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
-  font-size: 26px;
+.venue__kicker {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
   margin-bottom: 6px;
 }
-.event__time {
-  color: var(--gold);
-  letter-spacing: 0.16em;
-  font-size: 14px;
-  margin-bottom: 12px;
+.venue__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 30px;
+  margin-bottom: 6px;
+  line-height: 1.15;
 }
-.event__place { color: var(--ink-soft); font-size: 14px; margin-bottom: 18px; }
-.event__map {
-  display: inline-block;
+.venue__name a { color: var(--ink); text-decoration: none; transition: color 0.2s; }
+.venue__name a:hover { color: var(--gold); }
+.venue__addr {
+  color: var(--ink-soft);
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+.venue__schedule {
+  list-style: none;
+  text-align: left;
+  margin: 0 auto 24px;
+  width: 100%;
+  max-width: 320px;
+}
+.venue__schedule li {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--gold-light);
+}
+.venue__schedule li:last-child { border-bottom: none; }
+.venue__time {
+  flex: 0 0 auto;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.venue__act { color: var(--ink); font-size: 14px; }
+.venue__map {
+  margin-top: auto;
+  align-self: center;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -331,8 +384,9 @@ section { padding: 96px 24px; }
   text-decoration: none;
   border-bottom: 1px solid var(--gold-light);
   padding-bottom: 3px;
+  transition: color 0.2s;
 }
-.event__map:hover { color: var(--ink); }
+.venue__map:hover { color: var(--ink); }
 
 /* ---------- details (dress + gifts) ---------- */
 .details { max-width: var(--max); margin: 0 auto; }

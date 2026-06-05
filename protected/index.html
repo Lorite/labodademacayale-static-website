@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Maca &amp; Ale · Nuestra Boda</title>
+  <title data-i18n="meta.title">Maca &amp; Ale · Nuestra Boda</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -16,66 +16,73 @@
   <header class="nav" id="top">
     <a href="#top" class="nav__brand">M <span>&amp;</span> A</a>
     <nav class="nav__links">
-      <a href="#historia">Historia</a>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#galeria">Galería</a>
-      <a href="#cuando">Cuándo &amp; Dónde</a>
-      <a href="#regalo">Regalo</a>
-      <a href="#rsvp">Confirmar</a>
+      <a href="#historia" data-i18n="nav.story">Historia</a>
+      <a href="#nosotros" data-i18n="nav.about">Nosotros</a>
+      <a href="#galeria" data-i18n="nav.gallery">Galería</a>
+      <a href="#cuando" data-i18n="nav.when">Cuándo &amp; Dónde</a>
+      <a href="#regalo" data-i18n="nav.gift">Regalo</a>
+      <a href="#rsvp" data-i18n="nav.rsvp">Confirmar</a>
     </nav>
-    <a href="/logout" class="nav__logout" title="Cerrar sesión">Salir</a>
+    <div class="nav__right">
+      <div class="nav__lang" role="group" aria-label="Idioma / Language">
+        <button type="button" class="nav__lang-btn" data-lang-btn="es">ES</button>
+        <span class="nav__lang-sep">·</span>
+        <button type="button" class="nav__lang-btn" data-lang-btn="en">EN</button>
+      </div>
+      <a href="/logout" class="nav__logout" data-i18n="nav.logout" data-i18n-title="nav.logoutTitle" title="Cerrar sesión">Salir</a>
+    </div>
   </header>
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
     <div class="hero__inner">
-      <p class="eyebrow">Nos casamos</p>
+      <p class="eyebrow" data-i18n="hero.eyebrow">Nos casamos</p>
       <h1 class="hero__names">Maca <span class="amp">&amp;</span> Ale</h1>
       <div class="rule"><span></span>&#10070;<span></span></div>
-      <p class="hero__date">5 de Septiembre, 2026 · Macael, Almería</p>
+      <p class="hero__date" data-i18n="hero.date">4 de Septiembre de 2026</p>
     </div>
-    <a href="#cuenta" class="hero__scroll" aria-label="Desplázate">&#8964;</a>
+    <a href="#cuenta" class="hero__scroll" data-i18n-aria="hero.scroll" aria-label="Desplázate">&#8964;</a>
   </section>
 
   <!-- ============ COUNTDOWN ============ -->
   <section class="countdown" id="cuenta">
-    <p class="section-eyebrow">Cuenta atrás</p>
-    <h2 class="section-title">Falta poco para el gran día</h2>
+    <p class="section-eyebrow" data-i18n="count.eyebrow">Cuenta atrás</p>
+    <h2 class="section-title" data-i18n="count.title">Falta poco para el gran día</h2>
     <div class="countdown__grid" id="countdown" data-date="2026-09-04">
-      <div class="count"><span class="count__num" data-unit="days">--</span><span class="count__label">Días</span></div>
-      <div class="count"><span class="count__num" data-unit="hours">--</span><span class="count__label">Horas</span></div>
-      <div class="count"><span class="count__num" data-unit="minutes">--</span><span class="count__label">Minutos</span></div>
-      <div class="count"><span class="count__num" data-unit="seconds">--</span><span class="count__label">Segundos</span></div>
+      <div class="count"><span class="count__num" data-unit="days">--</span><span class="count__label" data-i18n="count.days">Días</span></div>
+      <div class="count"><span class="count__num" data-unit="hours">--</span><span class="count__label" data-i18n="count.hours">Horas</span></div>
+      <div class="count"><span class="count__num" data-unit="minutes">--</span><span class="count__label" data-i18n="count.minutes">Minutos</span></div>
+      <div class="count"><span class="count__num" data-unit="seconds">--</span><span class="count__label" data-i18n="count.seconds">Segundos</span></div>
     </div>
   </section>
 
   <!-- ============ LOVE STORY ============ -->
   <section class="story" id="historia">
-    <p class="section-eyebrow">Nuestra historia</p>
-    <h2 class="section-title">Cómo llegamos hasta aquí</h2>
+    <p class="section-eyebrow" data-i18n="story.eyebrow">Nuestra historia</p>
+    <h2 class="section-title" data-i18n="story.title">Cómo llegamos hasta aquí</h2>
     <ol class="timeline">
       <li class="timeline__item">
         <div class="timeline__media" data-img="images/historia-1.jpg"></div>
         <div class="timeline__text">
-          <p class="timeline__date">Primavera de 2019</p>
-          <h3>Nos conocimos</h3>
-          <p>Un encuentro casual que lo cambió todo. (Edita este texto con vuestra historia.)</p>
+          <p class="timeline__date" data-i18n="story.1.date">Primavera de 2019</p>
+          <h3 data-i18n="story.1.title">Nos conocimos</h3>
+          <p data-i18n="story.1.text">Un encuentro casual que lo cambió todo. (Edita este texto con vuestra historia.)</p>
         </div>
       </li>
       <li class="timeline__item">
         <div class="timeline__media" data-img="images/historia-2.jpg"></div>
         <div class="timeline__text">
-          <p class="timeline__date">Verano de 2019</p>
-          <h3>Nuestra primera cita</h3>
-          <p>La primera de muchas. (Edita este texto con vuestra historia.)</p>
+          <p class="timeline__date" data-i18n="story.2.date">Verano de 2019</p>
+          <h3 data-i18n="story.2.title">Nuestra primera cita</h3>
+          <p data-i18n="story.2.text">La primera de muchas. (Edita este texto con vuestra historia.)</p>
         </div>
       </li>
       <li class="timeline__item">
         <div class="timeline__media" data-img="images/historia-3.jpg"></div>
         <div class="timeline__text">
-          <p class="timeline__date">Diciembre de 2024</p>
-          <h3>La propuesta</h3>
-          <p>Dijimos «sí» al resto de nuestras vidas. (Edita este texto con vuestra historia.)</p>
+          <p class="timeline__date" data-i18n="story.3.date">Diciembre de 2024</p>
+          <h3 data-i18n="story.3.title">La propuesta</h3>
+          <p data-i18n="story.3.text">Dijimos «sí» al resto de nuestras vidas. (Edita este texto con vuestra historia.)</p>
         </div>
       </li>
     </ol>
@@ -83,27 +90,27 @@
 
   <!-- ============ ABOUT US ============ -->
   <section class="about" id="nosotros">
-    <p class="section-eyebrow">Los novios</p>
-    <h2 class="section-title">Sobre nosotros</h2>
+    <p class="section-eyebrow" data-i18n="about.eyebrow">Los novios</p>
+    <h2 class="section-title" data-i18n="about.title">Sobre nosotros</h2>
     <div class="about__grid">
       <article class="profile">
         <div class="profile__photo" data-img="images/maca.jpg"></div>
         <h3>Maca</h3>
-        <p>Una breve presentación de la novia. (Edita este texto.)</p>
+        <p data-i18n="about.maca">Una breve presentación de la novia. (Edita este texto.)</p>
       </article>
       <div class="profile__amp">&amp;</div>
       <article class="profile">
         <div class="profile__photo" data-img="images/ale.jpg"></div>
         <h3>Ale</h3>
-        <p>Una breve presentación del novio. (Edita este texto.)</p>
+        <p data-i18n="about.ale">Una breve presentación del novio. (Edita este texto.)</p>
       </article>
     </div>
   </section>
 
   <!-- ============ GALLERY ============ -->
   <section class="gallery" id="galeria">
-    <p class="section-eyebrow">Recuerdos</p>
-    <h2 class="section-title">Galería</h2>
+    <p class="section-eyebrow" data-i18n="gallery.eyebrow">Recuerdos</p>
+    <h2 class="section-title" data-i18n="gallery.title">Galería</h2>
     <div class="gallery__grid">
       <figure class="gallery__cell" data-img="images/galeria-1.jpg"></figure>
       <figure class="gallery__cell" data-img="images/galeria-2.jpg"></figure>
@@ -112,34 +119,49 @@
       <figure class="gallery__cell" data-img="images/galeria-5.jpg"></figure>
       <figure class="gallery__cell" data-img="images/galeria-6.jpg"></figure>
     </div>
-    <p class="gallery__note">Las fotos se añadirán en la carpeta privada <code>images/</code>.</p>
+    <p class="gallery__note" data-i18n="gallery.note">Las fotos llegarán pronto.</p>
   </section>
 
   <!-- ============ TIME & PLACE ============ -->
   <section class="when" id="cuando">
-    <p class="section-eyebrow">El gran día</p>
-    <h2 class="section-title">Cuándo &amp; Dónde</h2>
+    <p class="section-eyebrow" data-i18n="when.eyebrow">El gran día</p>
+    <h2 class="section-title" data-i18n="when.title">Cuándo &amp; Dónde</h2>
     <div class="when__grid">
-      <article class="event">
+
+      <!-- Ceremonia (datos de lugar inyectados desde variables de entorno) -->
+      <article class="venue">
         <span class="event__icon">&#9962;</span>
-        <h3>Ceremonia</h3>
-        <p class="event__time">17:00 h</p>
-        <p class="event__place">Iglesia de Macael<br />Macael, Almería</p>
-        <a class="event__map" href="https://maps.google.com/?q=Macael+Almeria" target="_blank" rel="noopener">Ver mapa</a>
+        <p class="venue__kicker" data-i18n="when.ceremonyKicker">La ceremonia</p>
+        <h3 class="venue__name">
+          <a href="{{CEREMONY_SITE_URL}}" target="_blank" rel="noopener">{{CEREMONY_NAME}}</a>
+        </h3>
+        <p class="venue__addr">{{CEREMONY_ADDRESS}}</p>
+        <ul class="venue__schedule">
+          <li>
+            <span class="venue__time">17:30 &ndash; 18:30</span>
+            <span class="venue__act" data-i18n="when.ceremonyAct">Ceremonia religiosa</span>
+          </li>
+        </ul>
+        <a class="venue__map" href="{{CEREMONY_MAPS_URL}}" target="_blank" rel="noopener" data-i18n="when.directions">Cómo llegar</a>
       </article>
-      <article class="event">
-        <span class="event__icon">&#127870;</span>
-        <h3>Recepción</h3>
-        <p class="event__time">19:00 h</p>
-        <p class="event__place">Salón de celebraciones<br />(Dirección por confirmar)</p>
-        <a class="event__map" href="https://maps.google.com/?q=Macael+Almeria" target="_blank" rel="noopener">Ver mapa</a>
+
+      <!-- Celebración: todo en la misma finca, agrupado -->
+      <article class="venue">
+        <span class="event__icon">&#129346;</span>
+        <p class="venue__kicker" data-i18n="when.celebrationKicker">La celebración</p>
+        <h3 class="venue__name">
+          <a href="{{PARTY_SITE_URL}}" target="_blank" rel="noopener">{{PARTY_NAME}}</a>
+        </h3>
+        <p class="venue__addr">{{PARTY_ADDRESS}}</p>
+        <ul class="venue__schedule">
+          <li><span class="venue__time">19:00 &ndash; 19:30</span><span class="venue__act" data-i18n="when.reception">Recepción</span></li>
+          <li><span class="venue__time">19:30 &ndash; 21:00</span><span class="venue__act" data-i18n="when.cocktail">Cóctel</span></li>
+          <li><span class="venue__time">21:00 &ndash; 23:00</span><span class="venue__act" data-i18n="when.banquet">Banquete</span></li>
+          <li><span class="venue__time">23:00 &ndash; 03:00</span><span class="venue__act" data-i18n="when.party">Fiesta · DJ y barra libre</span></li>
+        </ul>
+        <a class="venue__map" href="{{PARTY_MAPS_URL}}" target="_blank" rel="noopener" data-i18n="when.directions">Cómo llegar</a>
       </article>
-      <article class="event">
-        <span class="event__icon">&#127881;</span>
-        <h3>Fiesta</h3>
-        <p class="event__time">21:00 h</p>
-        <p class="event__place">¡A celebrar hasta el amanecer!</p>
-      </article>
+
     </div>
   </section>
 
@@ -148,73 +170,73 @@
     <div class="details__grid">
       <article class="detail-card">
         <span class="event__icon">&#128087;</span>
-        <h3>Código de vestimenta</h3>
-        <p>Etiqueta formal. Los tonos tierra y dorados son bienvenidos.</p>
+        <h3 data-i18n="details.dressTitle">Código de vestimenta</h3>
+        <p data-i18n="details.dressText">Etiqueta formal. Los tonos tierra y dorados son bienvenidos.</p>
       </article>
       <article class="detail-card">
         <span class="event__icon">&#127873;</span>
-        <h3>Mesa de regalos</h3>
-        <p>Vuestra presencia es nuestro mejor regalo. Y si queréis tener un detalle con nosotros, justo aquí abajo os contamos cómo. <a href="#regalo">Ver más &#8595;</a></p>
+        <h3 data-i18n="details.giftTitle">Mesa de regalos</h3>
+        <p data-i18n-html="details.giftText">Vuestra presencia es nuestro mejor regalo. Y si queréis tener un detalle con nosotros, justo aquí abajo os contamos cómo. <a href="#regalo">Ver más &#8595;</a></p>
       </article>
     </div>
   </section>
 
   <!-- ============ GIFT / MONEY ============ -->
   <section class="gift" id="regalo">
-    <p class="section-eyebrow">Un detalle especial</p>
-    <h2 class="section-title">Regalo de boda</h2>
-    <p class="gift__intro">
+    <p class="section-eyebrow" data-i18n="gift.eyebrow">Un detalle especial</p>
+    <h2 class="section-title" data-i18n="gift.title">Regalo de boda</h2>
+    <p class="gift__intro" data-i18n="gift.intro">
       Tres cosas hay en la vida: salud, dinero y amor. Afortunadamente nos sobran las dos primeras, así que si nos queréis obsequiar con algo, el dinero será bien recibido para nuestra nueva etapa juntos. ¡Mil gracias!
     </p>
 
     <div class="gift__card">
       <span class="gift__icon">&#128176;</span>
-      <p class="gift__label">Aportación por transferencia</p>
+      <p class="gift__label" data-i18n="gift.label">Aportación por transferencia</p>
 
       <div class="gift__iban">
         <code id="iban-value">{{GIFT_IBAN}}</code>
-        <button type="button" class="gift__copy" id="iban-copy" data-target="#iban-value">
+        <button type="button" class="gift__copy" id="iban-copy" data-target="#iban-value" data-i18n="gift.copy">
           Copiar
         </button>
       </div>
 
       <dl class="gift__meta">
         <div class="gift__row" data-optional>
-          <dt>Titular</dt>
+          <dt data-i18n="gift.holder">Titular</dt>
           <dd id="iban-holder">{{GIFT_HOLDER}}</dd>
         </div>
       </dl>
 
-      <p class="gift__thanks">Gracias de todo corazón &#128153;</p>
+      <p class="gift__thanks" data-i18n="gift.thanks">Gracias de todo corazón &#128153;</p>
     </div>
   </section>
 
   <!-- ============ RSVP ============ -->
   <section class="rsvp" id="rsvp">
-    <p class="section-eyebrow">Confirma tu asistencia</p>
-    <h2 class="section-title">¿Nos acompañas?</h2>
-    <p class="rsvp__intro">Por favor, confirma antes del <strong>1 de Agosto de 2026</strong>.</p>
+    <p class="section-eyebrow" data-i18n="rsvp.eyebrow">Confirma tu asistencia</p>
+    <h2 class="section-title" data-i18n="rsvp.title">¿Nos acompañas?</h2>
+    <p class="rsvp__intro" data-i18n-html="rsvp.intro">Por favor, confirma antes del <strong>1 de Agosto de 2026</strong>.<br />Si no puedes asistir, también agradecemos que nos lo hagas saber.</p>
 
     <form class="rsvp__form" id="rsvp-form">
       <div class="field">
-        <label for="name">Nombre y apellidos</label>
+        <label for="name" data-i18n="rsvp.name">Nombre y apellidos</label>
         <input type="text" id="name" name="name" required />
       </div>
       <div class="field">
-        <label for="guests">Número de acompañantes</label>
+        <label for="guests" data-i18n="rsvp.guests">Número de acompañantes (aparte de ti)</label>
         <input type="number" id="guests" name="guests" min="0" value="0" />
       </div>
       <fieldset class="field field--choice">
-        <legend>¿Asistirás?</legend>
-        <label><input type="radio" name="attend" value="Sí, allí estaré" checked /> Sí, allí estaré</label>
-        <label><input type="radio" name="attend" value="No podré asistir" /> No podré asistir</label>
+        <legend data-i18n="rsvp.attendLegend">¿Asistirás?</legend>
+        <label><input type="radio" name="attend" value="yes" checked /> <span data-i18n="rsvp.yes">Sí, allí estaré</span></label>
+        <label><input type="radio" name="attend" value="no" /> <span data-i18n="rsvp.no">No podré asistir</span></label>
       </fieldset>
       <div class="field">
-        <label for="note">Mensaje (opcional)</label>
+        <label for="note" data-i18n="rsvp.note">Mensaje (opcional)</label>
         <textarea id="note" name="note" rows="3"></textarea>
       </div>
-      <button type="submit">Enviar confirmación</button>
-      <p class="rsvp__hint">Se abrirá tu correo con la confirmación lista para enviar.</p>
+      <button type="submit" data-i18n="rsvp.submit">Enviar confirmación</button>
+      <p class="rsvp__hint" data-i18n="rsvp.hint">Se abrirá tu correo con la confirmación lista para enviar.</p>
     </form>
   </section>
 
@@ -222,9 +244,10 @@
   <footer class="footer">
     <div class="rule rule--light"><span></span>&#10070;<span></span></div>
     <p class="footer__names">Maca &amp; Ale</p>
-    <p class="footer__date">5 · 09 · 2026</p>
+    <p class="footer__date">04 · 09 · 2026</p>
   </footer>
 
+  <script src="/assets/i18n.js"></script>
   <script src="/assets/main.js"></script>
 </body>
 </html>

@@ -10,9 +10,17 @@
  *   SESSION_SECRET  random string used to sign the session cookie
  *   PORT            port to listen on (default 3000)
  *   SESSION_HOURS   how long a login stays valid (default 720 = 30 days)
- *   GIFT_IBAN       bank IBAN for wedding gifts (injected at serve time)
- *   GIFT_HOLDER     account holder name (optional)
+ *
+ * Private details below are injected into the page at request time, so they only
+ * reach logged-in guests and never live in the (public) repository:
+ *   GIFT_IBAN, GIFT_HOLDER                              wedding gift / bank info
+ *   CEREMONY_NAME, CEREMONY_ADDRESS,
+ *   CEREMONY_MAPS_URL, CEREMONY_SITE_URL                church / ceremony venue
+ *   PARTY_NAME, PARTY_ADDRESS,
+ *   PARTY_MAPS_URL, PARTY_SITE_URL                      reception / party venue
  */
+
+require('dotenv').config({ quiet: true }); // loads a local .env in dev; no-op if absent (e.g. Coolify)
 
 const fs = require('fs');
 const path = require('path');
@@ -27,9 +35,16 @@ const SESSION_SECRET = process.env.SESSION_SECRET;
 const SESSION_MS = (Number(process.env.SESSION_HOURS) || 720) * 60 * 60 * 1000;
 const COOKIE_NAME = 'boda_session';
 
-// Gift / bank details — supplied via env vars, never committed to the repo.
-const GIFT_IBAN = process.env.GIFT_IBAN || '';
-const GIFT_HOLDER = process.env.GIFT_HOLDER || '';
+// Private values injected into the page (see header) — supplied via env vars,
+// never committed to the repo. Keys match the {{PLACEHOLDER}} tokens in the HTML.
+const INJECTIONS = [
+  'GIFT_IBAN', 'GIFT_HOLDER',
+  'CEREMONY_NAME', 'CEREMONY_ADDRESS', 'CEREMONY_MAPS_URL', 'CEREMONY_SITE_URL',
+  'PARTY_NAME', 'PARTY_ADDRESS', 'PARTY_MAPS_URL', 'PARTY_SITE_URL',
+].reduce((acc, key) => {
+  acc[key] = process.env[key] || '';
+  return acc;
+}, {});
 
 if (!SITE_PASSWORD || !SESSION_SECRET) {
   console.error(
@@ -113,8 +128,9 @@ function escapeHtml(value) {
 }
 
 function renderIndex(res) {
-  const html = INDEX_TEMPLATE.replace(/\{\{GIFT_IBAN\}\}/g, escapeHtml(GIFT_IBAN))
-    .replace(/\{\{GIFT_HOLDER\}\}/g, escapeHtml(GIFT_HOLDER));
+  const html = INDEX_TEMPLATE.replace(/\{\{(\w+)\}\}/g, (match, key) =>
+    key in INJECTIONS ? escapeHtml(INJECTIONS[key]) : match
+  );
   res.type('html').send(html);
 }
 

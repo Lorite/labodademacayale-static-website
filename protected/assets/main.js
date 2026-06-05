@@ -52,7 +52,7 @@
 // ---------- Reveal on scroll ----------
 (function revealOnScroll() {
   const targets = document.querySelectorAll(
-    '.timeline__item, .event, .gallery__cell, .profile, .detail-card, .section-title'
+    '.timeline__item, .venue, .gallery__cell, .profile, .detail-card, .section-title'
   );
   targets.forEach((el) => el.classList.add('reveal'));
 
@@ -87,16 +87,20 @@
   if (!ibanEl || !copyBtn) return;
 
   const iban = ibanEl.textContent.trim();
+  const t = (key, fallback) => (window.i18n ? window.i18n.t(key) : null) || fallback;
 
   // If no IBAN is configured yet, show a friendly note and disable copying.
+  // The data-i18n attribute lets the message follow the selected language.
   if (iban === '') {
-    ibanEl.textContent = 'Disponible próximamente';
+    ibanEl.setAttribute('data-i18n', 'gift.empty');
+    ibanEl.textContent = t('gift.empty', 'Disponible próximamente');
     ibanEl.classList.add('is-empty');
     copyBtn.disabled = true;
     copyBtn.style.display = 'none';
     return;
   }
 
+  let resetTimer = null;
   copyBtn.addEventListener('click', async () => {
     const plain = iban.replace(/\s+/g, ''); // copy without spaces for easy pasting
     try {
@@ -110,11 +114,11 @@
       document.execCommand('copy');
       document.body.removeChild(tmp);
     }
-    const original = copyBtn.textContent;
-    copyBtn.textContent = '¡Copiado!';
+    copyBtn.textContent = t('gift.copied', '¡Copiado!');
     copyBtn.classList.add('is-copied');
-    setTimeout(() => {
-      copyBtn.textContent = original;
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(() => {
+      copyBtn.textContent = t('gift.copy', 'Copiar');
       copyBtn.classList.remove('is-copied');
     }, 1800);
   });
@@ -128,20 +132,23 @@
   // Change this to the couple's email address.
   const TO = 'hola@labodademacayale.com';
 
+  const t = (key, fallback) => (window.i18n ? window.i18n.t(key) : null) || fallback;
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(form);
     const name = (data.get('name') || '').toString().trim();
     const guests = (data.get('guests') || '0').toString().trim();
-    const attend = (data.get('attend') || '').toString();
+    const attendRaw = (data.get('attend') || '').toString();
+    const attend = attendRaw === 'no' ? t('rsvp.no', 'No') : t('rsvp.yes', 'Sí');
     const note = (data.get('note') || '').toString().trim();
 
-    const subject = `Confirmación de asistencia — ${name || 'Invitado'}`;
+    const subject = `${t('rsvp.mailSubject', 'Confirmación de asistencia')} — ${name || '?'}`;
     const body =
-      `Nombre: ${name}\n` +
-      `Acompañantes: ${guests}\n` +
-      `Asistencia: ${attend}\n` +
-      `Mensaje: ${note || '—'}`;
+      `${t('rsvp.mailName', 'Nombre')}: ${name}\n` +
+      `${t('rsvp.mailGuests', 'Acompañantes')}: ${guests}\n` +
+      `${t('rsvp.mailAttend', 'Asistencia')}: ${attend}\n` +
+      `${t('rsvp.mailNote', 'Mensaje')}: ${note || '—'}`;
 
     window.location.href =
       `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
