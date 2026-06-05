@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Boda de Macayale</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="password-screen" class="password-container">
+        <div class="password-box">
+            <h1>La Boda de Macayale</h1>
+            <p>Please enter the password to view</p>
+            <input
+                type="password"
+                id="password-input"
+                placeholder="Enter password"
+                autocomplete="off"
+            >
+            <button onclick="checkPassword()">Enter</button>
+            <p id="error-message" class="error"></p>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <!-- Main website content will go here -->
+        <header>
+            <h1>La Boda de Macayale</h1>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h2>Welcome to Our Wedding</h2>
+                <p>We're excited to celebrate with you!</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="password.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

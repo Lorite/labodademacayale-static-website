@@ -1,0 +1,17 @@
+{
+  "name": "labodademacayale-static-website",
+  "version": "1.0.0",
+  "description": "A password-protected wedding website",
+  "main": "src/index.html",
+  "scripts": {
+    "dev": "echo 'Development server setup needed'",
+    "build": "echo 'Build script setup needed'",
+    "deploy": "echo 'Deploy script setup needed'"
+  },
+  "keywords": [
+    "wedding",
+    "website"
+  ],
+  "author": "",
+  "license": "ISC"
+}
