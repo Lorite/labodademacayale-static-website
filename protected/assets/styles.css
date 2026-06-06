@@ -533,9 +533,9 @@ section { padding: 96px 24px; }
 .gift__iban code {
   flex: 1 1 auto;
   min-width: 0;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(20px, 4vw, 28px);
-  letter-spacing: 0.06em;
+  font-family: ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+  font-size: clamp(17px, 3vw, 20px);
+  letter-spacing: 0.08em;
   color: var(--gold-light);
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(231, 214, 176, 0.28);
