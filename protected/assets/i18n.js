@@ -104,7 +104,7 @@ const translations = {
       'Tres cosas hay en la vida: salud, dinero y amor. Afortunadamente nos sobran las dos primeras, así que si nos queréis obsequiar con algo, el dinero será bien recibido para nuestra nueva etapa juntos. ¡Mil gracias!',
     'gift.label': 'Aportación por transferencia',
     'gift.howto':
-      'Haznos una transferencia bancaria al siguiente número IBAN. Puedes copiarlo con el botón de copiar.',
+      'Puedes hacernos una transferencia bancaria al siguiente número IBAN. Puedes copiarlo con el botón de copiar.',
     'gift.copy': 'Copiar',
     'gift.copied': '¡Copiado!',
     'gift.beneficiary': 'Beneficiario',
@@ -231,7 +231,7 @@ const translations = {
       "There are three things in life: health, money and love. Luckily we have plenty of the first two — so if you'd like to give us something, a contribution toward our new life together would be very welcome. Thank you so much!",
     'gift.label': 'By bank transfer',
     'gift.howto':
-      'Simply make a bank transfer to the IBAN below. You can copy it with the copy button.',
+      'You can make a bank transfer to the IBAN below. You can copy it with the copy button.',
     'gift.copy': 'Copy',
     'gift.copied': 'Copied!',
     'gift.beneficiary': 'Beneficiary',
@@ -359,7 +359,7 @@ const translations = {
       'Bizitzan hiru gauza daude: osasuna, dirua eta maitasuna. Zorionez, lehen biak soberan ditugu; beraz, zerbait oparitu nahi badiguzue, dirua ondo etorriko zaigu elkarrekin hasten dugun etapa berrirako. Mila esker!',
     'gift.label': 'Transferentzia bidez',
     'gift.howto':
-      'Egin transferentzia bat beheko IBAN zenbakira. Kopiatzeko botoiarekin kopia dezakezu.',
+      'Beheko IBAN zenbakira transferentzia bat egin diezagukezu. Kopiatzeko botoiarekin kopia dezakezu.',
     'gift.copy': 'Kopiatu',
     'gift.copied': 'Kopiatuta!',
     'gift.beneficiary': 'Onuraduna',
@@ -487,7 +487,7 @@ const translations = {
       "Tres cosas hay en la vida, mi niño: salud, perras y amor. Por suerte de las dos primeras vamos sobraos, así que si nos quieren regalar algo, una ayudita pa'l bolsillo nos viene de lujo pa' esta nueva etapa juntos. ¡Mil gracias, chacho!",
     'gift.label': 'Un empujoncito por transferencia',
     'gift.howto':
-      "Échanos una transferencia al número IBAN de abajo, mi niño. Le das al botón de copiar y ya está.",
+      "Puedes echarnos una transferencia al número IBAN de abajo, mi niño. Le das al botón de copiar y ya está.",
     'gift.copy': 'Copiar',
     'gift.copied': '¡Copiao!',
     'gift.beneficiary': 'Beneficiario',
@@ -615,7 +615,7 @@ const translations = {
       '人生には三つの大切なものがあります。健康、お金、そして愛。幸いにも最初の二つは十分にありますので、もし何か贈ってくださるなら、二人の新しい門出のためのご祝儀をいただけたら嬉しいです。本当にありがとうございます！',
     'gift.label': '銀行振込で',
     'gift.howto':
-      '下のIBAN番号宛にお振込みください。コピーボタンで番号をコピーできます。',
+      '下のIBAN番号宛にお振込みいただけます。コピーボタンで番号をコピーできます。',
     'gift.copy': 'コピー',
     'gift.copied': 'コピーしました！',
     'gift.beneficiary': '受取人',
