@@ -75,7 +75,8 @@ const translations = {
 
     'about.eyebrow': 'Los novios',
     'about.title': 'Sobre nosotros',
-    'about.maca': 'Una breve presentación de la novia. (Edita este texto.)',
+    'about.maca':
+      'Dicen que el amor es encontrar a esa persona que te complementa, y Maca es exactamente eso para mí. Es el motor de nuestros viajes, la experta catadora de sushi y la voz que llena de alegría y palabras cada rincón de nuestra casa. Admiro su bondad infinita y su capacidad de adaptación; al fin y al cabo, solo por mí cambió el sol por los inviernos de Dinamarca, armada únicamente con unas agujas de crochet. Me paso la vida admirándola, incluso cuando la miro de reojo en el sofá y descubro que se ha vuelto a quedar frita en la primera escena de la película. Es mi persona favorita en el mundo entero y la quiero con locura.',
     'about.ale': 'Una breve presentación del novio. (Edita este texto.)',
 
     'gallery.eyebrow': 'Recuerdos',
@@ -201,7 +202,8 @@ const translations = {
 
     'about.eyebrow': 'The couple',
     'about.title': 'About us',
-    'about.maca': 'A short introduction to the bride. (Edit this text.)',
+    'about.maca':
+      "They say love is finding that person who completes you, and Maca is exactly that for me. She's the driving force behind our travels, the expert sushi taster, and the voice that fills every corner of our home with joy and words. I admire her endless kindness and her ability to adapt; after all, just for me she traded the sun for the Danish winters, armed with nothing but a pair of crochet needles. I spend my life admiring her, even when I glance sideways at her on the sofa and find she's dozed off yet again during the very first scene of the film. She's my favourite person in the whole world, and I love her madly.",
     'about.ale': 'A short introduction to the groom. (Edit this text.)',
 
     'gallery.eyebrow': 'Memories',
@@ -328,7 +330,8 @@ const translations = {
 
     'about.eyebrow': 'Ezkongaiak',
     'about.title': 'Guri buruz',
-    'about.maca': 'Andregaiaren aurkezpen laburra. (Editatu testu hau.)',
+    'about.maca':
+      'Esaten dute maitasuna zu osatzen zaituen pertsona hori aurkitzea dela, eta Maca da, hain zuzen ere, hori niretzat. Gure bidaien motorra da, sushi dastatzaile aditua eta gure etxeko txoko guztiak alaitasunez eta hitzez betetzen dituen ahotsa. Bere onberatasun mugagabea eta egokitzeko gaitasuna miresten ditut; izan ere, niregatik bakarrik aldatu zuen eguzkia Danimarkako neguengatik, kakorratz batzuekin baino ez zela armatuta. Bizitza osoa ematen dut bera miresten, baita sofan zeharka begiratu eta filmaren lehen eszenan berriz ere lo geratu dela ohartzen naizenean ere. Mundu osoko nire pertsona kuttuna da, eta erotzeraino maite dut.',
     'about.ale': 'Senargaiaren aurkezpen laburra. (Editatu testu hau.)',
 
     'gallery.eyebrow': 'Oroitzapenak',
@@ -455,7 +458,8 @@ const translations = {
 
     'about.eyebrow': 'Los novios',
     'about.title': 'Sobre nosotros dos',
-    'about.maca': 'Cuatro cositas sobre la novia. (Edita este texto.)',
+    'about.maca':
+      'Dicen que el amor es encontrar a esa persona que te complementa, y Maca es justo eso pa mí, mi niña. Es el motor de nuestros viajes, la catadora experta de sushi y la voz que llena de alegría y de palabras cada rincón de la casa. Me tiene enamorao su bondad infinita y lo bien que se adapta a to; al fin y al cabo, solo por mí cambió el sol por los inviernos de Dinamarca, armada nada más que con unas agujas de crochet. Me paso la vida admirándola, hasta cuando la miro de reojo en el sofá y me la encuentro otra vez frita en la primera escena de la película. Es mi persona favorita del mundo entero y la quiero con locura.',
     'about.ale': 'Cuatro cositas sobre el novio. (Edita este texto.)',
 
     'gallery.eyebrow': 'Recuerdos',
@@ -582,7 +586,8 @@ const translations = {
 
     'about.eyebrow': '新郎新婦',
     'about.title': '私たちについて',
-    'about.maca': '新婦の簡単なご紹介。（このテキストを編集してください。）',
+    'about.maca':
+      '愛とは、自分を完璧に補ってくれる人に出会うことだと言いますが、マカはまさに私にとってそういう存在です。私たちの旅の原動力であり、寿司の食通であり、そして家じゅうのすみずみを喜びと言葉で満たしてくれる声でもあります。彼女の限りない優しさと、どんな環境にも順応できる力には、いつも感心させられます。なにしろ、私のためだけに太陽をデンマークの冬と引き換えにし、手にはかぎ針だけを携えてやって来てくれたのですから。私は四六時中、彼女に見惚れています——ソファで横目に見て、また映画の最初のシーンで眠りに落ちている彼女に気づくときでさえも。彼女は世界中で一番大好きな人で、心の底から愛しています。',
     'about.ale': '新郎の簡単なご紹介。（このテキストを編集してください。）',
 
     'gallery.eyebrow': '思い出',
