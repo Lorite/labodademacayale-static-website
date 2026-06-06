@@ -66,6 +66,12 @@ emails over Gmail SMTP:
   can answer them with one click.
 - **To the guest** — a friendly confirmation **in the language they used on the
   site** (Spanish or English), echoing what they submitted. `Reply-To` is you.
+  Guests who confirm they're attending also get a calendar file
+  (`boda-maca-ale.ics`) attached and one-click "add to Google Calendar" links —
+  one entry for the ceremony, one for the celebration. It's a plain attachment
+  (no invite/accept flow), works with any calendar app, and exposes no other
+  guests' details. The entries are built from the venue env vars and the date in
+  `server.js`; with no venue set, nothing is attached.
 
 `GMAIL_APP_PASSWORD` is a 16-character Google **App Password** (not your normal
 password): turn on 2-Step Verification, then generate one at

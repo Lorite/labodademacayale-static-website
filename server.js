@@ -390,40 +390,207 @@ function headCount(record) {
   return 1 + partyInfo(record).guests;
 }
 
-// Fixed, non-secret event facts for the guest confirmation email. Venue NAMES
-// and ADDRESSES come from env vars (INJECTIONS); only the date and start times
-// live here. Keep these in sync with the schedule in protected/index.html.
+// Localized date string for the wedding day, shown in the guest email.
 const EVENT_DATE = { es: 'Viernes, 4 de Septiembre de 2026', en: 'Friday, September 4, 2026' };
-const CEREMONY_TIME = '18:00';
-const CELEBRATION_TIME = '19:30';
+
+// Timezone the wedding takes place in. Drives both the .ics times and the
+// "add to Google Calendar" links so guests abroad see the correct local hour.
+const EVENT_TZID = 'Europe/Madrid';
+
+// Single source of truth for the two calendar entries offered to attending
+// guests (ceremony + celebration). Venue NAMES/ADDRESSES come from env vars
+// (INJECTIONS); the date and times live here. Times are local to EVENT_TZID and
+// written as YYYYMMDD + HHMMSS. End times are approximate — they only size the
+// entry on the guest's calendar. Each UID is fixed (the same event for every
+// guest) so a later re-send updates the entry instead of duplicating it.
+// Keep date/times in sync with EVENT_DATE and the schedule in protected/index.html.
+const CALENDAR_EVENTS = [
+  {
+    kind: 'ceremony', uid: 'ceremonia-20260904@labodademacayale.com',
+    startDay: '20260904', start: '180000', endDay: '20260904', end: '193000',
+    name: INJECTIONS.CEREMONY_NAME, address: INJECTIONS.CEREMONY_ADDRESS, mapUrl: INJECTIONS.CEREMONY_MAPS_URL,
+  },
+  {
+    kind: 'celebration', uid: 'celebracion-20260904@labodademacayale.com',
+    startDay: '20260904', start: '193000', endDay: '20260905', end: '033000',
+    name: INJECTIONS.PARTY_NAME, address: INJECTIONS.PARTY_ADDRESS, mapUrl: INJECTIONS.PARTY_MAPS_URL,
+  },
+];
+
+// Day-of timeline shown in each calendar entry's description. Only ES/EN, since
+// the guest email is only ever sent in those two languages. Keep in sync with
+// the .venue__schedule lists in protected/index.html.
+const SCHEDULE = [
+  { time: '18:00 – 18:45', es: 'Ceremonia religiosa', en: 'Religious ceremony' },
+  { time: '19:30 – 20:00', es: 'Recepción', en: 'Reception' },
+  { time: '20:00 – 22:00', es: 'Cóctel', en: 'Cocktail' },
+  { time: '22:00 – 23:30', es: 'Banquete', en: 'Dinner' },
+  { time: '23:30 – 03:30', es: 'Fiesta · DJ y barra libre', en: 'Party · DJ & open bar' },
+];
+
+// The schedule as a plain multi-line block for a calendar event description.
+function scheduleText(en) {
+  return (en ? 'Schedule' : 'Horario') + ':\n' +
+    SCHEDULE.map((s) => s.time + '  ' + (en ? s.en : s.es)).join('\n');
+}
+
+// VTIMEZONE for Europe/Madrid (EU DST rules) so calendar clients resolve the
+// local times above correctly regardless of the guest's own timezone.
+const ICS_VTIMEZONE = [
+  'BEGIN:VTIMEZONE',
+  'TZID:Europe/Madrid',
+  'BEGIN:DAYLIGHT',
+  'TZOFFSETFROM:+0100', 'TZOFFSETTO:+0200', 'TZNAME:CEST',
+  'DTSTART:19700329T020000', 'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU',
+  'END:DAYLIGHT',
+  'BEGIN:STANDARD',
+  'TZOFFSETFROM:+0200', 'TZOFFSETTO:+0100', 'TZNAME:CET',
+  'DTSTART:19701025T030000', 'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU',
+  'END:STANDARD',
+  'END:VTIMEZONE',
+];
+
+// '180000' -> '18:00' for display.
+function displayTime(hms) {
+  return hms.slice(0, 2) + ':' + hms.slice(2, 4);
+}
+
+// Joined "Name, Address" for an event (either part may be unset).
+function eventVenue(ev) {
+  return [ev.name, ev.address].filter(Boolean).join(', ');
+}
+
+// Events whose venue env vars are set — the only ones we can put on a calendar.
+function eligibleEvents() {
+  return CALENDAR_EVENTS.filter(eventVenue);
+}
+
+// Localized human label + calendar title for an event.
+function eventLabels(ev, en) {
+  const couple = MAIL_FROM_NAME; // e.g. "Maca & Ale"
+  if (ev.kind === 'ceremony') {
+    return en
+      ? { label: 'Ceremony', title: 'Ceremony · ' + couple + "'s wedding" }
+      : { label: 'Ceremonia', title: 'Ceremonia · Boda de ' + couple };
+  }
+  return en
+    ? { label: 'Celebration', title: 'Celebration · ' + couple + "'s wedding" }
+    : { label: 'Celebración', title: 'Celebración · Boda de ' + couple };
+}
+
+// "Add to Google Calendar" template URL for one event (one-click, no backend).
+// ctz makes the (non-UTC) times resolve in the wedding's timezone.
+function googleCalendarUrl(ev, en) {
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: eventLabels(ev, en).title,
+    dates: ev.startDay + 'T' + ev.start + '/' + ev.endDay + 'T' + ev.end,
+    ctz: EVENT_TZID,
+  });
+  const venue = eventVenue(ev);
+  if (venue) params.set('location', venue);
+  params.set('details', scheduleText(en));
+  return 'https://calendar.google.com/calendar/render?' + params.toString();
+}
+
+// Escape a text value per RFC 5545 (backslash, comma, semicolon, newlines).
+function icsEscape(value) {
+  return String(value == null ? '' : value)
+    .replace(/\\/g, '\\\\')
+    .replace(/;/g, '\\;')
+    .replace(/,/g, '\\,')
+    .replace(/\r?\n/g, '\\n');
+}
+
+// Fold a content line to <=75 octets, continuation lines starting with a space.
+function icsFold(line) {
+  if (Buffer.byteLength(line, 'utf8') <= 75) return line;
+  const out = [];
+  let cur = '';
+  for (const ch of line) {
+    if (Buffer.byteLength(cur + ch, 'utf8') > 73) {
+      out.push(cur);
+      cur = ' ' + ch; // a leading space marks a folded continuation line
+    } else {
+      cur += ch;
+    }
+  }
+  out.push(cur);
+  return out.join('\r\n');
+}
+
+// Build a PUBLISH .ics with a VEVENT per eligible event. PUBLISH (not REQUEST)
+// just adds the event to the guest's calendar — no accept/decline prompt, which
+// would be confusing right after they RSVP'd on the site. Returns null when no
+// venue is configured (so there is nothing to attach).
+function buildCalendarIcs(en) {
+  const events = eligibleEvents();
+  if (events.length === 0) return null;
+
+  const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
+  const lines = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//La Boda de Macayale//RSVP//ES',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    ...ICS_VTIMEZONE,
+  ];
+  for (const ev of events) {
+    lines.push(
+      'BEGIN:VEVENT',
+      'UID:' + ev.uid,
+      'DTSTAMP:' + stamp,
+      'DTSTART;TZID=' + EVENT_TZID + ':' + ev.startDay + 'T' + ev.start,
+      'DTEND;TZID=' + EVENT_TZID + ':' + ev.endDay + 'T' + ev.end,
+      'SUMMARY:' + icsEscape(eventLabels(ev, en).title),
+      'LOCATION:' + icsEscape(eventVenue(ev)),
+      'DESCRIPTION:' + icsEscape(scheduleText(en)),
+    );
+    lines.push('END:VEVENT');
+  }
+  lines.push('END:VCALENDAR');
+  return lines.map(icsFold).join('\r\n') + '\r\n';
+}
 
 // Localized "event details" block (date, ceremony, celebration) for the guest
-// email. A venue row is omitted when its name/address env vars are unset.
+// email, with a map link and a one-click "add to Google Calendar" link per
+// venue. A venue row is omitted when its name/address env vars are unset.
 function buildEventDetails(en) {
   const L = en
-    ? { title: 'Event details', date: 'Date', ceremony: 'Ceremony', celebration: 'Celebration', at: 'at', from: 'from', map: 'map' }
-    : { title: 'Detalles del evento', date: 'Fecha', ceremony: 'Ceremonia', celebration: 'Celebración', at: 'a las', from: 'desde las', map: 'mapa' };
+    ? { title: 'Event details', date: 'Date', map: 'map', cal: 'add to calendar', at: 'at', from: 'from' }
+    : { title: 'Detalles del evento', date: 'Fecha', map: 'mapa', cal: 'añadir al calendario', at: 'a las', from: 'desde las' };
 
-  const rows = [{ label: L.date, value: en ? EVENT_DATE.en : EVENT_DATE.es, url: '' }];
+  const rows = [{ label: L.date, value: en ? EVENT_DATE.en : EVENT_DATE.es, links: [] }];
 
-  const ceremonyVenue = [INJECTIONS.CEREMONY_NAME, INJECTIONS.CEREMONY_ADDRESS].filter(Boolean).join(', ');
-  if (ceremonyVenue) {
-    rows.push({ label: L.ceremony, value: L.at + ' ' + CEREMONY_TIME + ' · ' + ceremonyVenue, url: INJECTIONS.CEREMONY_MAPS_URL });
-  }
-  const partyVenue = [INJECTIONS.PARTY_NAME, INJECTIONS.PARTY_ADDRESS].filter(Boolean).join(', ');
-  if (partyVenue) {
-    rows.push({ label: L.celebration, value: L.from + ' ' + CELEBRATION_TIME + ' · ' + partyVenue, url: INJECTIONS.PARTY_MAPS_URL });
+  for (const ev of eligibleEvents()) {
+    const lead = ev.kind === 'ceremony' ? L.at : L.from;
+    const links = [];
+    if (ev.mapUrl) links.push({ label: L.map, url: ev.mapUrl });
+    links.push({ label: L.cal, url: googleCalendarUrl(ev, en) });
+    rows.push({
+      label: eventLabels(ev, en).label,
+      value: lead + ' ' + displayTime(ev.start) + ' · ' + eventVenue(ev),
+      links,
+    });
   }
 
   const text = L.title + ':\n' +
-    rows.map((r) => '  - ' + r.label + ': ' + r.value + (r.url ? ' (' + r.url + ')' : '')).join('\n');
+    rows.map((r) => {
+      const extras = r.links.map((l) => '\n      ' + l.label + ': ' + l.url).join('');
+      return '  - ' + r.label + ': ' + r.value + extras;
+    }).join('\n');
 
   const html =
     '<p style="margin:18px 0 4px;color:#7a7363">' + escapeHtml(L.title) + '</p>' +
     '<ul style="margin:0;padding-left:18px">' +
-    rows.map((r) =>
-      '<li><strong>' + escapeHtml(r.label) + ':</strong> ' + escapeHtml(r.value) +
-      (r.url ? ' (<a href="' + escapeHtml(r.url) + '">' + escapeHtml(L.map) + '</a>)' : '') + '</li>').join('') +
+    rows.map((r) => {
+      const extras = r.links
+        .map((l) => '<a href="' + escapeHtml(l.url) + '">' + escapeHtml(l.label) + '</a>')
+        .join(' · ');
+      return '<li><strong>' + escapeHtml(r.label) + ':</strong> ' + escapeHtml(r.value) +
+        (extras ? ' (' + extras + ')' : '') + '</li>';
+    }).join('') +
     '</ul>';
 
   return { text, html };
@@ -493,6 +660,7 @@ function buildGuestEmail(record) {
         summary: 'Summary of your reply:',
         attend: 'Attending', yes: 'Yes', no: 'No',
         guests: 'People', companions: 'Companions', diet: 'Dietary notes',
+        calNote: "We've attached a calendar file (.ics) so you can add the wedding to your calendar — or use the links above.",
         change: 'Need to change something? Just reply to this email.',
         sign: 'With love,',
       }
@@ -505,6 +673,7 @@ function buildGuestEmail(record) {
         summary: 'Resumen de tu respuesta:',
         attend: 'Asistencia', yes: 'Sí', no: 'No',
         guests: 'Personas', companions: 'Acompañantes', diet: 'Intolerancias',
+        calNote: 'Te adjuntamos un archivo (.ics) para añadir la boda a tu calendario, o usa los enlaces de arriba.',
         change: '¿Necesitas cambiar algo? Responde a este correo.',
         sign: 'Con cariño,',
       };
@@ -520,8 +689,11 @@ function buildGuestEmail(record) {
     if (diet) lines.push(t.diet + ': ' + diet);
   }
 
-  // Remind attending guests of the date, location and time.
+  // Remind attending guests of the date, location and time, and offer to add it
+  // to their calendar (the .ics is attached in sendRsvpEmails). The note only
+  // makes sense when at least one venue — hence one calendar entry — is set.
   const event = attends ? buildEventDetails(en) : null;
+  const hasCalendar = attends && eligibleEvents().length > 0;
 
   const blocks = [
     t.hi,
@@ -529,6 +701,7 @@ function buildGuestEmail(record) {
     t.summary + '\n' + lines.map((l) => '  - ' + l).join('\n'),
   ];
   if (event) blocks.push(event.text);
+  if (hasCalendar) blocks.push(t.calNote);
   blocks.push(t.change, t.sign + '\nMaca & Ale');
   const text = blocks.join('\n\n');
 
@@ -539,6 +712,7 @@ function buildGuestEmail(record) {
     '<p style="margin:16px 0 4px;color:#7a7363">' + escapeHtml(t.summary) + '</p>' +
     '<ul style="margin:0;padding-left:18px">' + lines.map((l) => '<li>' + escapeHtml(l) + '</li>').join('') + '</ul>' +
     (event ? event.html : '') +
+    (hasCalendar ? '<p style="margin-top:12px;font-size:13px;color:#7a7363">' + escapeHtml(t.calNote) + '</p>' : '') +
     '<p style="margin-top:16px">' + escapeHtml(t.change) + '</p>' +
     '<p style="margin-top:20px">' + escapeHtml(t.sign) +
     '<br /><strong style="color:#b8943f">Maca &amp; Ale</strong></p></div>';
@@ -555,9 +729,25 @@ async function sendRsvpEmails(record) {
   const notify = buildNotificationEmail(record);
   const guest = buildGuestEmail(record);
 
+  const guestMail = { from, to: record.email, replyTo: adminTo, subject: guest.subject, text: guest.text, html: guest.html };
+
+  // Attach a calendar file for attending guests so they can add the wedding to
+  // any calendar app (Google, Apple, Outlook). It's a plain attachment — no
+  // invite/accept flow — and exposes no other guests' details.
+  if (record.attend === 'yes') {
+    const ics = buildCalendarIcs(record.lang === 'en');
+    if (ics) {
+      guestMail.attachments = [{
+        filename: 'boda-maca-ale.ics',
+        content: ics,
+        contentType: 'text/calendar; charset=utf-8; method=PUBLISH',
+      }];
+    }
+  }
+
   const results = await Promise.allSettled([
     mailer.sendMail({ from, to: adminTo, replyTo: record.email, subject: notify.subject, text: notify.text, html: notify.html }),
-    mailer.sendMail({ from, to: record.email, replyTo: adminTo, subject: guest.subject, text: guest.text, html: guest.html }),
+    mailer.sendMail(guestMail),
   ]);
   for (const r of results) {
     if (r.status === 'rejected') console.error('[mail] RSVP email failed:', r.reason);
@@ -677,4 +867,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { app, buildNotificationEmail, buildGuestEmail, sendRsvpEmails };
+module.exports = { app, buildNotificationEmail, buildGuestEmail, buildCalendarIcs, sendRsvpEmails };
