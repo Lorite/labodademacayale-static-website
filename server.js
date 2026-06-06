@@ -19,6 +19,15 @@
  *   PARTY_NAME, PARTY_ADDRESS,
  *   PARTY_MAPS_URL, PARTY_SITE_URL                      reception / party venue
  *   CONTACT_EMAIL                                       address guests can write to
+ *
+ * When a guest sends an RSVP, two emails go out (if Gmail is configured below):
+ * a notification to CONTACT_EMAIL and a confirmation to the guest. Mail is sent
+ * via Gmail SMTP, authenticated with an app password:
+ *   GMAIL_USER          the Gmail address that sends the mail
+ *   GMAIL_APP_PASSWORD  a 16-char Gmail "app password" (NOT your login password)
+ *   MAIL_FROM_NAME      optional display name on the "From" line (default Maca & Ale)
+ * Leave GMAIL_USER / GMAIL_APP_PASSWORD unset to disable RSVP emails entirely;
+ * confirmations are still saved to RSVP_FILE either way.
  */
 
 require('dotenv').config({ quiet: true }); // loads a local .env in dev; no-op if absent (e.g. Coolify)
@@ -27,6 +36,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const express = require('express');
+const nodemailer = require('nodemailer');
 
 const app = express();
 
@@ -55,6 +65,24 @@ const INJECTIONS = [
   acc[key] = process.env[key] || '';
   return acc;
 }, {});
+
+// Gmail SMTP for RSVP notifications. Configured with an app password so no
+// real account password is involved. When the credentials are absent the
+// transporter is null and emails are simply skipped (the RSVP is still saved).
+const GMAIL_USER = process.env.GMAIL_USER || '';
+const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD || '';
+const MAIL_FROM_NAME = process.env.MAIL_FROM_NAME || 'Maca & Ale';
+
+const mailer = GMAIL_USER && GMAIL_APP_PASSWORD
+  ? nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD },
+    })
+  : null;
+
+if (!mailer) {
+  console.warn('[mail] GMAIL_USER / GMAIL_APP_PASSWORD not set — RSVP emails disabled.');
+}
 
 if (!SITE_PASSWORD || !SESSION_SECRET) {
   console.error(
@@ -355,6 +383,140 @@ function renderRsvpList(rows, key) {
 </html>`;
 }
 
+// --- RSVP email notifications -------------------------------------------
+
+// Total head-count for a reply (main guest + companions).
+function headCount(record) {
+  return 1 + partyInfo(record).guests;
+}
+
+// Notification sent to the couple (CONTACT_EMAIL) for every reply. Always in
+// Spanish — it is read by Maca & Ale, not the guests.
+function buildNotificationEmail(record) {
+  const attends = record.attend === 'yes';
+  const rows = [
+    ['Nombre', record.name],
+    ['Email', record.email],
+    ['Asiste', attends ? 'Sí' : 'No'],
+  ];
+  if (attends) rows.push(['Total personas', String(headCount(record))]);
+  if (record.intolerances) rows.push(['Intolerancias', record.intolerances]);
+  if (record.note) rows.push(['Mensaje', record.note]);
+  rows.push(['Fecha', record.ts]);
+
+  const companionText = record.companions.length
+    ? '\nAcompañantes (' + record.companions.length + '):\n' +
+      record.companions
+        .map((c) => '  - ' + c.name + (c.kid ? ' (niño/a)' : '') + (c.intolerances ? ' — ' + c.intolerances : ''))
+        .join('\n') + '\n'
+    : '';
+
+  const text =
+    'Nueva confirmación desde la web de la boda.\n\n' +
+    rows.map(([k, v]) => k + ': ' + v).join('\n') + '\n' + companionText;
+
+  const companionHtml = record.companions.length
+    ? '<p style="margin:14px 0 4px"><strong>Acompañantes (' + record.companions.length + '):</strong></p>' +
+      '<ul style="margin:0;padding-left:18px">' +
+      record.companions
+        .map((c) => '<li>' + escapeHtml(c.name) + (c.kid ? ' <em>(niño/a)</em>' : '') +
+          (c.intolerances ? ' — ' + escapeHtml(c.intolerances) : '') + '</li>')
+        .join('') + '</ul>'
+    : '';
+
+  const html =
+    '<div style="font-family:system-ui,Segoe UI,Roboto,sans-serif;color:#2b2b2b">' +
+    '<h2 style="color:#b8943f;font-weight:600;margin:0 0 12px">Nueva confirmación</h2>' +
+    '<table style="border-collapse:collapse">' +
+    rows.map(([k, v]) =>
+      '<tr><td style="padding:2px 14px 2px 0;color:#7a7363">' + escapeHtml(k) + '</td>' +
+      '<td style="padding:2px 0"><strong>' + escapeHtml(v) + '</strong></td></tr>').join('') +
+    '</table>' + companionHtml + '</div>';
+
+  return {
+    subject: 'Nueva confirmación: ' + record.name + ' — ' + (attends ? 'asiste' : 'no asiste'),
+    text,
+    html,
+  };
+}
+
+// Confirmation sent back to the guest, in the language they used on the site.
+function buildGuestEmail(record) {
+  const en = record.lang === 'en';
+  const attends = record.attend === 'yes';
+  const t = en
+    ? {
+        subject: attends ? "We've received your RSVP! · Maca & Ale" : "We've received your reply · Maca & Ale",
+        hi: 'Hi ' + record.name + ',',
+        body: attends
+          ? "Thank you for confirming — we're so happy you'll be celebrating with us! 💛"
+          : "Thank you for letting us know. We're so sorry you can't make it — you'll be missed.",
+        summary: 'Summary of your reply:',
+        attend: 'Attending', yes: 'Yes', no: 'No',
+        guests: 'People', companions: 'Companions', diet: 'Dietary notes',
+        change: 'Need to change something? Just reply to this email.',
+        sign: 'With love,',
+      }
+    : {
+        subject: attends ? '¡Hemos recibido tu confirmación! · Maca & Ale' : 'Hemos recibido tu respuesta · Maca & Ale',
+        hi: 'Hola ' + record.name + ',',
+        body: attends
+          ? '¡Gracias por confirmar! Nos hace muchísima ilusión que nos acompañes en nuestro gran día. 💛'
+          : 'Gracias por avisarnos. Sentimos mucho que no puedas acompañarnos ese día, te echaremos de menos.',
+        summary: 'Resumen de tu respuesta:',
+        attend: 'Asistencia', yes: 'Sí', no: 'No',
+        guests: 'Personas', companions: 'Acompañantes', diet: 'Intolerancias',
+        change: '¿Necesitas cambiar algo? Responde a este correo.',
+        sign: 'Con cariño,',
+      };
+
+  const lines = [t.attend + ': ' + (attends ? t.yes : t.no)];
+  if (attends) {
+    lines.push(t.guests + ': ' + headCount(record));
+    if (record.companions.length) {
+      lines.push(t.companions + ': ' +
+        record.companions.map((c) => c.name + (c.kid ? ' (niño/a)' : '')).join(', '));
+    }
+    const diet = allergyLines(record).map((l) => (l.who ? l.who + ': ' : '') + l.what).join('; ');
+    if (diet) lines.push(t.diet + ': ' + diet);
+  }
+
+  const text =
+    t.hi + '\n\n' + t.body + '\n\n' +
+    t.summary + '\n' + lines.map((l) => '  - ' + l).join('\n') + '\n\n' +
+    t.change + '\n\n' + t.sign + '\nMaca & Ale';
+
+  const html =
+    '<div style="font-family:system-ui,Segoe UI,Roboto,sans-serif;color:#2b2b2b;max-width:520px">' +
+    '<p>' + escapeHtml(t.hi) + '</p>' +
+    '<p>' + escapeHtml(t.body) + '</p>' +
+    '<p style="margin:16px 0 4px;color:#7a7363">' + escapeHtml(t.summary) + '</p>' +
+    '<ul style="margin:0;padding-left:18px">' + lines.map((l) => '<li>' + escapeHtml(l) + '</li>').join('') + '</ul>' +
+    '<p style="margin-top:16px">' + escapeHtml(t.change) + '</p>' +
+    '<p style="margin-top:20px">' + escapeHtml(t.sign) +
+    '<br /><strong style="color:#b8943f">Maca &amp; Ale</strong></p></div>';
+
+  return { subject: t.subject, text, html };
+}
+
+// Fire off both RSVP emails. Best-effort: a mail failure is logged but never
+// affects the guest, whose reply is already safely stored in RSVP_FILE.
+async function sendRsvpEmails(record) {
+  if (!mailer) return;
+  const from = '"' + MAIL_FROM_NAME + '" <' + GMAIL_USER + '>';
+  const adminTo = INJECTIONS.CONTACT_EMAIL || GMAIL_USER;
+  const notify = buildNotificationEmail(record);
+  const guest = buildGuestEmail(record);
+
+  const results = await Promise.allSettled([
+    mailer.sendMail({ from, to: adminTo, replyTo: record.email, subject: notify.subject, text: notify.text, html: notify.html }),
+    mailer.sendMail({ from, to: record.email, replyTo: adminTo, subject: guest.subject, text: guest.text, html: guest.html }),
+  ]);
+  for (const r of results) {
+    if (r.status === 'rejected') console.error('[mail] RSVP email failed:', r.reason);
+  }
+}
+
 // Public assets needed by the login page (css/fonts/etc.)
 app.use('/public', express.static(PUBLIC_DIR, { redirect: false }));
 
@@ -427,6 +589,11 @@ app.post('/rsvp', (req, res) => {
     console.error('[rsvp] could not save confirmation:', err);
     return res.status(500).json({ ok: false, error: 'save_failed' });
   }
+
+  // Notify the couple and confirm to the guest, but don't make them wait on
+  // SMTP — the reply is already saved, so email is strictly best-effort.
+  sendRsvpEmails(record).catch((err) => console.error('[mail] RSVP email error:', err));
+
   res.json({ ok: true });
 });
 
@@ -455,6 +622,12 @@ app.use((req, res) => {
   renderIndex(res);
 });
 
-app.listen(PORT, () => {
-  console.log(`La Boda de Macayale running on http://localhost:${PORT}`);
-});
+// Only start listening when run directly (`node server.js`); requiring this
+// module (e.g. from a test) gives access to the helpers without opening a port.
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`La Boda de Macayale running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = { app, buildNotificationEmail, buildGuestEmail, sendRsvpEmails };

@@ -56,6 +56,24 @@ If `RSVP_ADMIN_KEY` is left unset, the admin view is disabled (returns 404).
 > **persistent volume** (e.g. mounted at `/data`) and set `RSVP_FILE=/data/rsvps.jsonl`.
 > Without a volume, redeploys would wipe the confirmations.
 
+### Email notifications (optional)
+
+If you set `GMAIL_USER` and `GMAIL_APP_PASSWORD`, every RSVP also triggers two
+emails over Gmail SMTP:
+
+- **To you** (`CONTACT_EMAIL`) — a summary of the reply (name, attendance,
+  head-count, companions, allergies, message). `Reply-To` is the guest, so you
+  can answer them with one click.
+- **To the guest** — a friendly confirmation **in the language they used on the
+  site** (Spanish or English), echoing what they submitted. `Reply-To` is you.
+
+`GMAIL_APP_PASSWORD` is a 16-character Google **App Password** (not your normal
+password): turn on 2-Step Verification, then generate one at
+[myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+Set both in Coolify. Leave them unset to disable email — RSVPs are still saved
+to `RSVP_FILE` regardless. Sending is best-effort: if Gmail is down or rejects
+the message, the guest's reply is still recorded and the form still succeeds.
+
 ## Languages (ES / EN)
 
 UI text is translated client-side in [protected/assets/i18n.js](protected/assets/i18n.js).
