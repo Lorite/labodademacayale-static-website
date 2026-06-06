@@ -92,7 +92,7 @@ const translations = {
     'when.ceremonyAct': 'Ceremonia religiosa',
     'when.reception': 'Recepción',
     'when.cocktail': 'Cóctel',
-    'when.banquet': 'Banquete',
+    'when.dinner': 'Cena',
     'when.party': 'Fiesta · DJ y barra libre',
     'when.directions': 'Cómo llegar',
 
@@ -217,7 +217,7 @@ const translations = {
     'when.ceremonyAct': 'Religious ceremony',
     'when.reception': 'Reception',
     'when.cocktail': 'Cocktail',
-    'when.banquet': 'Dinner',
+    'when.dinner': 'Dinner',
     'when.party': 'Party · DJ & open bar',
     'when.directions': 'Get directions',
 
@@ -343,7 +343,7 @@ const translations = {
     'when.ceremonyAct': 'Erlijio-zeremonia',
     'when.reception': 'Harrera',
     'when.cocktail': 'Koktela',
-    'when.banquet': 'Banketea',
+    'when.dinner': 'Afaria',
     'when.party': 'Festa · DJ-a eta barra librea',
     'when.directions': 'Nola iritsi',
 
@@ -469,7 +469,7 @@ const translations = {
     'when.ceremonyAct': 'Ceremonia religiosa',
     'when.reception': 'El recibimiento',
     'when.cocktail': 'El piscolabis',
-    'when.banquet': 'La comilona',
+    'when.dinner': 'Cena',
     'when.party': 'Fiestón · DJ y barra libre, agüita',
     'when.directions': 'Cómo llegar',
 
@@ -595,7 +595,7 @@ const translations = {
     'when.ceremonyAct': '宗教式',
     'when.reception': '受付',
     'when.cocktail': 'カクテル',
-    'when.banquet': 'ディナー',
+    'when.dinner': 'ディナー',
     'when.party': 'パーティー · DJ & 飲み放題',
     'when.directions': 'アクセス',
 

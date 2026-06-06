@@ -424,7 +424,7 @@ const SCHEDULE = [
   { time: '18:00 – 18:45', es: 'Ceremonia religiosa', en: 'Religious ceremony' },
   { time: '19:30 – 20:00', es: 'Recepción', en: 'Reception' },
   { time: '20:00 – 22:00', es: 'Cóctel', en: 'Cocktail' },
-  { time: '22:00 – 23:30', es: 'Banquete', en: 'Dinner' },
+  { time: '22:00 – 23:30', es: 'Cena', en: 'Dinner' },
   { time: '23:30 – 03:30', es: 'Fiesta · DJ y barra libre', en: 'Party · DJ & open bar' },
 ];
 
