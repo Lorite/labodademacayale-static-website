@@ -119,7 +119,7 @@
         <div class="timeline__media" data-img="images/historia-7.jpeg"></div>
         <div class="timeline__text">
           <p class="timeline__date" data-i18n="story.7.date">Y también a Euskadi</p>
-          <h3 data-i18n="story.7.title">Escapada a Euskadi</h3>
+          <h3 data-i18n="story.7.title">De vuelta a Euskadi</h3>
           <p data-i18n="story.7.text">Más familia, más amigos y, por supuesto, los mejores pintxos del mundo.</p>
         </div>
       </li>
@@ -224,6 +224,8 @@
     </p>
 
     <div class="gift__card">
+      <p class="gift__label" data-i18n="gift.label">Aportación por transferencia</p>
+      <p class="gift__howto" data-i18n="gift.howto">Haznos una transferencia bancaria al siguiente número IBAN. Puedes copiarlo con el botón de copiar.</p>
       <div class="gift__iban">
         <code id="iban-value">{{GIFT_IBAN}}</code>
         <button type="button" class="gift__copy" id="iban-copy" data-target="#iban-value" data-i18n="gift.copy">
@@ -246,6 +248,10 @@
         </div>
       </dl>
 
+      <p class="gift__help">
+        <span data-i18n="gift.help">Si tienes cualquier duda, escríbenos directamente y te ayudamos encantados.</span>
+        <a class="gift__contact" id="gift-contact" href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a>
+      </p>
       <p class="gift__thanks" data-i18n="gift.thanks">Gracias de todo corazón &#128153;</p>
     </div>
   </section>
@@ -261,6 +267,10 @@
       <div class="field">
         <label for="name" data-i18n="rsvp.name">Nombre y apellidos</label>
         <input type="text" id="name" name="name" required />
+      </div>
+      <div class="field">
+        <label for="email" data-i18n="rsvp.email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required />
       </div>
       <div class="field">
         <label for="intolerances" data-i18n="rsvp.myIntol">Tus alergias o intolerancias alimentarias</label>

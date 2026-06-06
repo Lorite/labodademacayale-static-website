@@ -64,7 +64,7 @@ const translations = {
     'story.6.text':
       'Volvemos a casa para ver a la familia y a los amigos, y de paso disfrutar del mejor clima del mundo.',
     'story.7.date': 'Y también a Euskadi',
-    'story.7.title': 'Escapada a Euskadi',
+    'story.7.title': 'De vuelta a Euskadi',
     'story.7.text':
       'Más familia, más amigos y, por supuesto, los mejores pintxos del mundo.',
     'story.8.date': '2026',
@@ -100,11 +100,15 @@ const translations = {
     'gift.intro':
       'Tres cosas hay en la vida: salud, dinero y amor. Afortunadamente nos sobran las dos primeras, así que si nos queréis obsequiar con algo, el dinero será bien recibido para nuestra nueva etapa juntos. ¡Mil gracias!',
     'gift.label': 'Aportación por transferencia',
+    'gift.howto':
+      'Haznos una transferencia bancaria al siguiente número IBAN. Puedes copiarlo con el botón de copiar.',
     'gift.copy': 'Copiar',
     'gift.copied': '¡Copiado!',
     'gift.beneficiary': 'Beneficiario',
     'gift.bic': 'BIC/SWIFT',
     'gift.bank': 'Banco',
+    'gift.help':
+      'Si tienes cualquier duda, escríbenos directamente y te ayudamos encantados.',
     'gift.thanks': 'Gracias de todo corazón 💙',
     'gift.empty': 'Disponible próximamente',
 
@@ -114,6 +118,7 @@ const translations = {
       'Por favor, confirma <strong>cuanto antes</strong>.<br />Si no puedes asistir, también agradecemos que nos lo hagas saber.',
     'rsvp.cancelNote': 'Si ya has confirmado y necesitas cancelar, por favor avísanos directamente.',
     'rsvp.name': 'Nombre y apellidos',
+    'rsvp.email': 'Correo electrónico',
     'rsvp.myIntol': 'Tus alergias o intolerancias alimentarias',
     'rsvp.addCompanion': '+ Añadir acompañante',
     'rsvp.companionTitle': 'Acompañante',
@@ -126,7 +131,7 @@ const translations = {
     'rsvp.no': 'No podré asistir',
     'rsvp.note': 'Mensaje (opcional)',
     'rsvp.submit': 'Enviar confirmación',
-    'rsvp.hint': 'Tu confirmación se envía al instante; no necesitas tu correo.',
+    'rsvp.hint': 'Tu confirmación se envía al instante. Usaremos tu correo solo para escribirte si hiciera falta.',
     'rsvp.sending': 'Enviando…',
     'rsvp.success': '¡Gracias! Hemos recibido tu confirmación.',
     'rsvp.error': 'No se pudo enviar. Inténtalo de nuevo en un momento.',
@@ -181,7 +186,7 @@ const translations = {
     'story.6.text':
       'Coming home to see family and friends — and soaking up the best weather in the world.',
     'story.7.date': 'And to Euskadi too',
-    'story.7.title': 'A trip to Euskadi',
+    'story.7.title': 'Back to Euskadi',
     'story.7.text':
       'More family, more friends and, of course, the best pintxos in the world.',
     'story.8.date': '2026',
@@ -217,11 +222,15 @@ const translations = {
     'gift.intro':
       "There are three things in life: health, money and love. Luckily we have plenty of the first two — so if you'd like to give us something, a contribution toward our new life together would be very welcome. Thank you so much!",
     'gift.label': 'By bank transfer',
+    'gift.howto':
+      'Simply make a bank transfer to the IBAN below. You can copy it with the copy button.',
     'gift.copy': 'Copy',
     'gift.copied': 'Copied!',
     'gift.beneficiary': 'Beneficiary',
     'gift.bic': 'BIC/SWIFT',
     'gift.bank': 'Bank',
+    'gift.help':
+      "If you have any questions, just message us directly and we'll be happy to help.",
     'gift.thanks': 'Thank you from the bottom of our hearts 💙',
     'gift.empty': 'Available soon',
 
@@ -231,6 +240,7 @@ const translations = {
       'Please confirm <strong>as soon as you can</strong>.<br />If you cannot make it, we would appreciate knowing too.',
     'rsvp.cancelNote': 'If you have already confirmed and need to cancel, please let us know directly.',
     'rsvp.name': 'Full name',
+    'rsvp.email': 'Email address',
     'rsvp.myIntol': 'Your food allergies or intolerances',
     'rsvp.addCompanion': '+ Add companion',
     'rsvp.companionTitle': 'Companion',
@@ -243,7 +253,7 @@ const translations = {
     'rsvp.no': "Sorry, I can't make it",
     'rsvp.note': 'Message (optional)',
     'rsvp.submit': 'Send confirmation',
-    'rsvp.hint': 'Your reply is sent instantly — no email app needed.',
+    'rsvp.hint': "Your reply is sent instantly. We'll only use your email to reach you if needed.",
     'rsvp.sending': 'Sending…',
     'rsvp.success': 'Thank you! We have received your confirmation.',
     'rsvp.error': 'Could not send. Please try again in a moment.',
@@ -299,7 +309,7 @@ const translations = {
     'story.6.text':
       'Etxera itzultzen gara familia eta lagunak ikustera, eta munduko eguraldirik onenaz gozatzera.',
     'story.7.date': 'Euskadira ere bai',
-    'story.7.title': 'Euskadira ihesaldia',
+    'story.7.title': 'Euskadira itzulera',
     'story.7.text':
       'Familia gehiago, lagun gehiago eta, jakina, munduko pintxorik onenak.',
     'story.8.date': '2026',
@@ -335,11 +345,15 @@ const translations = {
     'gift.intro':
       'Bizitzan hiru gauza daude: osasuna, dirua eta maitasuna. Zorionez, lehen biak soberan ditugu; beraz, zerbait oparitu nahi badiguzue, dirua ondo etorriko zaigu elkarrekin hasten dugun etapa berrirako. Mila esker!',
     'gift.label': 'Transferentzia bidez',
+    'gift.howto':
+      'Egin transferentzia bat beheko IBAN zenbakira. Kopiatzeko botoiarekin kopia dezakezu.',
     'gift.copy': 'Kopiatu',
     'gift.copied': 'Kopiatuta!',
     'gift.beneficiary': 'Onuraduna',
     'gift.bic': 'BIC/SWIFT',
     'gift.bank': 'Bankua',
+    'gift.help':
+      'Zalantzarik baduzu, idatz iezaguzu zuzenean eta gustura lagunduko dizugu.',
     'gift.thanks': 'Bihotz-bihotzez, eskerrik asko 💙',
     'gift.empty': 'Laster eskuragarri',
 
@@ -349,6 +363,7 @@ const translations = {
       'Mesedez, baieztatu <strong>ahalik eta lasterren</strong>.<br />Ezin baduzu etorri, jakinaraztea ere eskertzen dugu.',
     'rsvp.cancelNote': 'Jada baieztatu baduzu eta etortzerik ez baduzu, jakinarazi iezaguzu zuzenean.',
     'rsvp.name': 'Izen-abizenak',
+    'rsvp.email': 'Helbide elektronikoa',
     'rsvp.myIntol': 'Zure elikadura-alergiak edo intolerantziak',
     'rsvp.addCompanion': '+ Gehitu lagun bat',
     'rsvp.companionTitle': 'Laguna',
@@ -361,7 +376,7 @@ const translations = {
     'rsvp.no': 'Ezin izango dut joan',
     'rsvp.note': 'Mezua (aukerakoa)',
     'rsvp.submit': 'Bidali baieztapena',
-    'rsvp.hint': 'Zure baieztapena berehala bidaltzen da; ez duzu posta elektronikorik behar.',
+    'rsvp.hint': 'Zure baieztapena berehala bidaltzen da. Zure helbide elektronikoa beharrezkoa bada bakarrik erabiliko dugu.',
     'rsvp.sending': 'Bidaltzen…',
     'rsvp.success': 'Eskerrik asko! Zure baieztapena jaso dugu.',
     'rsvp.error': 'Ezin izan da bidali. Saiatu berriro une batean.',
@@ -417,7 +432,7 @@ const translations = {
     'story.6.text':
       'Nos vamos pa casa a ver a la familia y a los amigos, y a disfrutar del mejor tiempo del mundo, mi niño.',
     'story.7.date': 'Y también pa Euskadi',
-    'story.7.title': 'Escapadita a Euskadi',
+    'story.7.title': 'De vuelta a Euskadi',
     'story.7.text':
       'Más familia, más amigos y, cómo no, los mejores pintxos del mundo, chacho.',
     'story.8.date': '2026',
@@ -453,11 +468,15 @@ const translations = {
     'gift.intro':
       "Tres cosas hay en la vida, mi niño: salud, perras y amor. Por suerte de las dos primeras vamos sobraos, así que si nos quieren regalar algo, una ayudita pa'l bolsillo nos viene de lujo pa' esta nueva etapa juntos. ¡Mil gracias, chacho!",
     'gift.label': 'Un empujoncito por transferencia',
+    'gift.howto':
+      "Échanos una transferencia al número IBAN de abajo, mi niño. Le das al botón de copiar y ya está.",
     'gift.copy': 'Copiar',
     'gift.copied': '¡Copiao!',
     'gift.beneficiary': 'Beneficiario',
     'gift.bic': 'BIC/SWIFT',
     'gift.bank': 'Banco',
+    'gift.help':
+      'Si tienes cualquier duda, chacho, escríbenos directamente y te echamos una mano.',
     'gift.thanks': 'Gracias de corazón, mi niño 💙',
     'gift.empty': 'Enseguidita lo ponemos',
 
@@ -467,6 +486,7 @@ const translations = {
       "Apúntate <strong>cuanto antes</strong>, no te despistes.<br />Y si al final no puedes venir, avísanos igual, que no pasa na'.",
     'rsvp.cancelNote': 'Si ya te apuntaste y al final no puedes, chacho, avísanos directamente.',
     'rsvp.name': 'Nombre y apellidos',
+    'rsvp.email': 'Correo electrónico',
     'rsvp.myIntol': 'Lo que no puedes comer (alergias o intolerancias)',
     'rsvp.addCompanion': '+ Apuntar a otro',
     'rsvp.companionTitle': 'Acompañante',
@@ -479,7 +499,7 @@ const translations = {
     'rsvp.no': 'No voy a poder, qué penita',
     'rsvp.note': 'Un mensajito (si quieres)',
     'rsvp.submit': '¡Apúntame!',
-    'rsvp.hint': 'Se envía al momento, mi niño; no hace falta ni el correo.',
+    'rsvp.hint': 'Se envía al momento, mi niño. El correo solo lo usamos pa escribirte si hiciera falta.',
     'rsvp.sending': 'Enviando, espérate…',
     'rsvp.success': '¡Gracias, mi niño! Ya te tenemos apuntao.',
     'rsvp.error': 'Ños, no se pudo enviar. Prueba otra vez en un ratito.',
@@ -535,7 +555,7 @@ const translations = {
     'story.6.text':
       '家族や友達に会いに帰省して、世界一の気候も満喫します。',
     'story.7.date': 'バスクにも',
-    'story.7.title': 'バスクへの旅',
+    'story.7.title': 'バスクへ帰省',
     'story.7.text':
       '家族や友達にもう一度会いに、そしてもちろん世界一のピンチョスを味わいに。',
     'story.8.date': '2026年',
@@ -571,11 +591,15 @@ const translations = {
     'gift.intro':
       '人生には三つの大切なものがあります。健康、お金、そして愛。幸いにも最初の二つは十分にありますので、もし何か贈ってくださるなら、二人の新しい門出のためのご祝儀をいただけたら嬉しいです。本当にありがとうございます！',
     'gift.label': '銀行振込で',
+    'gift.howto':
+      '下のIBAN番号宛にお振込みください。コピーボタンで番号をコピーできます。',
     'gift.copy': 'コピー',
     'gift.copied': 'コピーしました！',
     'gift.beneficiary': '受取人',
     'gift.bic': 'BIC/SWIFT',
     'gift.bank': '銀行名',
+    'gift.help':
+      'ご不明な点がございましたら、お気軽に直接ご連絡ください。喜んでお手伝いいたします。',
     'gift.thanks': '心より感謝を込めて 💙',
     'gift.empty': '近日公開',
 
@@ -585,6 +609,7 @@ const translations = {
       '<strong>お早めに</strong>ご返信ください。<br />ご欠席の場合も、お知らせいただけますと幸いです。',
     'rsvp.cancelNote': 'すでにご返信いただいた後にキャンセルが必要な場合は、直接ご連絡ください。',
     'rsvp.name': 'お名前（姓名）',
+    'rsvp.email': 'メールアドレス',
     'rsvp.myIntol': 'あなたのアレルギー・食物不耐性',
     'rsvp.addCompanion': '+ 同伴者を追加',
     'rsvp.companionTitle': '同伴者',
@@ -597,7 +622,7 @@ const translations = {
     'rsvp.no': '残念ながら欠席します',
     'rsvp.note': 'メッセージ（任意）',
     'rsvp.submit': '確認を送信',
-    'rsvp.hint': 'ご返信はすぐに送信されます。メールアプリは必要ありません。',
+    'rsvp.hint': 'ご返信はすぐに送信されます。メールアドレスは必要な場合のご連絡にのみ使用します。',
     'rsvp.sending': '送信中…',
     'rsvp.success': 'ありがとうございます！ご出欠を承りました。',
     'rsvp.error': '送信できませんでした。しばらくしてからもう一度お試しください。',

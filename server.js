@@ -18,6 +18,7 @@
  *   CEREMONY_MAPS_URL, CEREMONY_SITE_URL                church / ceremony venue
  *   PARTY_NAME, PARTY_ADDRESS,
  *   PARTY_MAPS_URL, PARTY_SITE_URL                      reception / party venue
+ *   CONTACT_EMAIL                                       address guests can write to
  */
 
 require('dotenv').config({ quiet: true }); // loads a local .env in dev; no-op if absent (e.g. Coolify)
@@ -49,6 +50,7 @@ const INJECTIONS = [
   'GIFT_IBAN', 'GIFT_BENEFICIARY', 'GIFT_BIC', 'GIFT_BANK',
   'CEREMONY_NAME', 'CEREMONY_ADDRESS', 'CEREMONY_MAPS_URL', 'CEREMONY_SITE_URL',
   'PARTY_NAME', 'PARTY_ADDRESS', 'PARTY_MAPS_URL', 'PARTY_SITE_URL',
+  'CONTACT_EMAIL',
 ].reduce((acc, key) => {
   acc[key] = process.env[key] || '';
   return acc;
@@ -229,7 +231,7 @@ function expandPeople(r) {
 
 // One row per person — handy for handing the caterer a flat guest list.
 function toCsv(rows) {
-  const header = ['Fecha', 'Grupo', 'Nombre', 'Tipo', 'Asiste', 'Intolerancias', 'Mensaje', 'Idioma'];
+  const header = ['Fecha', 'Grupo', 'Nombre', 'Tipo', 'Asiste', 'Email', 'Intolerancias', 'Mensaje', 'Idioma'];
   const lines = [header.join(',')];
   for (const r of rows) {
     for (const p of expandPeople(r)) {
@@ -239,6 +241,7 @@ function toCsv(rows) {
         p.name,
         p.kid ? 'Nino' : 'Adulto',
         r.attend,
+        p.main ? r.email || '' : '', // email belongs to the reply's main contact
         p.intolerances,
         p.main ? r.note : '', // the message belongs to the reply, show it once
         r.lang,
@@ -281,10 +284,15 @@ function renderRsvpList(rows, key) {
         .map((l) => (l.who ? `<strong>${escapeHtml(l.who)}:</strong> ` : '') + escapeHtml(l.what))
         .join('<br />');
 
+      const emailCell = r.email
+        ? `<a href="mailto:${escapeHtml(r.email)}">${escapeHtml(r.email)}</a>`
+        : '';
+
       return (
         '<tr>' +
         `<td>${escapeHtml(date)}</td>` +
         `<td>${nameCell}</td>` +
+        `<td>${emailCell}</td>` +
         `<td class="num">${info.guests}</td>` +
         `<td class="num">${info.kids}</td>` +
         `<td>${attend}</td>` +
@@ -339,7 +347,7 @@ function renderRsvpList(rows, key) {
     ${rows.length === 0
       ? '<p class="empty">Aun no hay confirmaciones.</p>'
       : `<table>
-      <thead><tr><th>Fecha</th><th>Nombre</th><th>Acomp.</th><th>Ninos</th><th>Asiste</th><th>Intolerancias</th><th>Mensaje</th></tr></thead>
+      <thead><tr><th>Fecha</th><th>Nombre</th><th>Email</th><th>Acomp.</th><th>Ninos</th><th>Asiste</th><th>Intolerancias</th><th>Mensaje</th></tr></thead>
       <tbody>${body}</tbody>
     </table>`}
   </div>
@@ -387,6 +395,12 @@ app.post('/rsvp', (req, res) => {
   const name = String(body.name || '').trim().slice(0, 120);
   if (!name) return res.status(400).json({ ok: false, error: 'name_required' });
 
+  // Email of the main contact is mandatory so we can reach them if needed.
+  const email = String(body.email || '').trim().slice(0, 200);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ ok: false, error: 'email_required' });
+  }
+
   const companions = (Array.isArray(body.companions) ? body.companions : [])
     .map((c) => ({
       name: String((c && c.name) || '').trim().slice(0, 120),
@@ -399,6 +413,7 @@ app.post('/rsvp', (req, res) => {
   const record = {
     ts: new Date().toISOString(),
     name,
+    email,
     intolerances: String(body.intolerances || '').trim().slice(0, 200),
     attend: body.attend === 'no' ? 'no' : 'yes',
     companions,

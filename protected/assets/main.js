@@ -82,6 +82,10 @@
     if (!dd || dd.textContent.trim() === '') row.hidden = true;
   });
 
+  // Hide the contact mailto link if no address was injected by the server.
+  const contactEl = document.getElementById('gift-contact');
+  if (contactEl && contactEl.textContent.trim() === '') contactEl.hidden = true;
+
   const ibanEl = document.getElementById('iban-value');
   const copyBtn = document.getElementById('iban-copy');
   if (!ibanEl || !copyBtn) return;
@@ -280,6 +284,7 @@
     const data = new FormData(form);
     const payload = {
       name: (data.get('name') || '').toString().trim(),
+      email: (data.get('email') || '').toString().trim(),
       intolerances: (data.get('intolerances') || '').toString().trim(),
       attend: (data.get('attend') || 'yes').toString(),
       companions: collectCompanions(),

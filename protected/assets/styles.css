@@ -520,8 +520,30 @@ section { padding: 96px 24px; }
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--gold-soft);
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
+.gift__howto {
+  max-width: 420px;
+  margin: 0 auto 24px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.gift__help {
+  max-width: 420px;
+  margin: 18px auto 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.gift__contact {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--gold-light);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(231, 214, 176, 0.4);
+}
+.gift__contact:hover { border-bottom-color: var(--gold-light); }
 .gift__iban {
   display: flex;
   align-items: stretch;
