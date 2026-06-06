@@ -67,7 +67,7 @@ const translations = {
     'story.7.date': 'Y también a Euskadi',
     'story.7.title': 'De vuelta a Euskadi',
     'story.7.text':
-      'Más familia, más amigos y, por supuesto, los mejores pintxos del mundo.',
+      'Volvemos a nuestra otra casa para ver a más familia, más amigos y, por supuesto, los mejores pintxos del mundo.',
     'story.8.date': '2026',
     'story.8.title': 'Damos el paso',
     'story.8.text':
@@ -101,7 +101,7 @@ const translations = {
     'gift.eyebrow': 'Un detalle especial',
     'gift.title': 'Regalo de boda',
     'gift.intro':
-      'Tres cosas hay en la vida: salud, dinero y amor. Afortunadamente nos sobran las dos primeras, así que si nos queréis obsequiar con algo, el dinero será bien recibido para nuestra nueva etapa juntos. ¡Mil gracias!',
+      'Tres cosas hay en la vida: salud, amor, y dinero. Afortunadamente nos sobran las dos primeras, así que si nos queréis obsequiar con algo, el dinero será bien recibido para nuestra nueva etapa juntos. ¡Mil gracias!',
     'gift.label': 'Aportación por transferencia',
     'gift.howto':
       'Puedes hacernos una transferencia bancaria al siguiente número IBAN. Puedes copiarlo con el botón de copiar.',
@@ -112,7 +112,7 @@ const translations = {
     'gift.bank': 'Banco',
     'gift.help':
       'Si tienes cualquier duda, escríbenos directamente y te ayudamos encantados.',
-    'gift.thanks': 'Gracias de todo corazón 💙',
+    'gift.thanks': 'Gracias de todo corazón.',
     'gift.empty': 'Disponible próximamente',
 
     'rsvp.eyebrow': 'Confirma tu asistencia',
@@ -194,7 +194,7 @@ const translations = {
     'story.7.date': 'And to Euskadi too',
     'story.7.title': 'Back to Euskadi',
     'story.7.text':
-      'More family, more friends and, of course, the best pintxos in the world.',
+      'Back to our other home to see more family, more friends, and of course the best pintxos in the world.',
     'story.8.date': '2026',
     'story.8.title': 'Taking the leap',
     'story.8.text':
@@ -228,7 +228,7 @@ const translations = {
     'gift.eyebrow': 'A special detail',
     'gift.title': 'Wedding gift',
     'gift.intro':
-      "There are three things in life: health, money and love. Luckily we have plenty of the first two — so if you'd like to give us something, a contribution toward our new life together would be very welcome. Thank you so much!",
+      "There are three things in life: health, love, and money. Luckily we have plenty of the first two — so if you'd like to give us something, a contribution toward our new life together would be very welcome. Thank you so much!",
     'gift.label': 'By bank transfer',
     'gift.howto':
       'You can make a bank transfer to the IBAN below. You can copy it with the copy button.',
@@ -239,7 +239,7 @@ const translations = {
     'gift.bank': 'Bank',
     'gift.help':
       "If you have any questions, just message us directly and we'll be happy to help.",
-    'gift.thanks': 'Thank you from the bottom of our hearts 💙',
+    'gift.thanks': 'Thank you from the bottom of our hearts.',
     'gift.empty': 'Available soon',
 
     'rsvp.eyebrow': 'Confirm your attendance',
@@ -322,7 +322,7 @@ const translations = {
     'story.7.date': 'Euskadira ere bai',
     'story.7.title': 'Euskadira itzulera',
     'story.7.text':
-      'Familia gehiago, lagun gehiago eta, jakina, munduko pintxorik onenak.',
+      'Gure beste etxera itzuli familia gehiago, lagun gehiago eta, noski, munduko pintxo onenak ikusteko.',
     'story.8.date': '2026',
     'story.8.title': 'Pausoa ematen',
     'story.8.text':
@@ -356,7 +356,7 @@ const translations = {
     'gift.eyebrow': 'Xehetasun berezia',
     'gift.title': 'Eztei-oparia',
     'gift.intro':
-      'Bizitzan hiru gauza daude: osasuna, dirua eta maitasuna. Zorionez, lehen biak soberan ditugu; beraz, zerbait oparitu nahi badiguzue, dirua ondo etorriko zaigu elkarrekin hasten dugun etapa berrirako. Mila esker!',
+      'Bizitzan hiru gauza daude: osasuna, maitasuna, eta dirua. Zorionez, lehen biak soberan ditugu; beraz, zerbait oparitu nahi badiguzue, dirua ondo etorriko zaigu elkarrekin hasten dugun etapa berrirako. Mila esker!',
     'gift.label': 'Transferentzia bidez',
     'gift.howto':
       'Beheko IBAN zenbakira transferentzia bat egin diezagukezu. Kopiatzeko botoiarekin kopia dezakezu.',
@@ -367,7 +367,7 @@ const translations = {
     'gift.bank': 'Bankua',
     'gift.help':
       'Zalantzarik baduzu, idatz iezaguzu zuzenean eta gustura lagunduko dizugu.',
-    'gift.thanks': 'Bihotz-bihotzez, eskerrik asko 💙',
+    'gift.thanks': 'Bihotz-bihotzez, eskerrik asko.',
     'gift.empty': 'Laster eskuragarri',
 
     'rsvp.eyebrow': 'Baieztatu zure etortzea',
@@ -450,7 +450,7 @@ const translations = {
     'story.7.date': 'Y también pa Euskadi',
     'story.7.title': 'De vuelta a Euskadi',
     'story.7.text':
-      'Más familia, más amigos y, cómo no, los mejores pintxos del mundo, chacho.',
+      'Volvemos a nuestra otra casa para ver a más familia, más amigos y, por supuesto, los mejores pintxos del mundo, chacho.',
     'story.8.date': '2026',
     'story.8.title': 'Damos el paso',
     'story.8.text':
@@ -484,7 +484,7 @@ const translations = {
     'gift.eyebrow': 'Un detallito especial',
     'gift.title': 'El regalito',
     'gift.intro':
-      "Tres cosas hay en la vida, mi niño: salud, perras y amor. Por suerte de las dos primeras vamos sobraos, así que si nos quieren regalar algo, una ayudita pa'l bolsillo nos viene de lujo pa' esta nueva etapa juntos. ¡Mil gracias, chacho!",
+      "Tres cosas hay en la vida, mi niño: salud, amor, y dinero. Afortunadamente nos sobran las dos primeras, así que si nos quieren regalar algo, una ayudita pa'l bolsillo nos viene de lujo pa' esta nueva etapa juntos. ¡Mil gracias, chacho!",
     'gift.label': 'Un empujoncito por transferencia',
     'gift.howto':
       "Puedes echarnos una transferencia al número IBAN de abajo, mi niño. Le das al botón de copiar y ya está.",
@@ -495,7 +495,7 @@ const translations = {
     'gift.bank': 'Banco',
     'gift.help':
       'Si tienes cualquier duda, chacho, escríbenos directamente y te echamos una mano.',
-    'gift.thanks': 'Gracias de corazón, mi niño 💙',
+    'gift.thanks': 'Gracias de corazón, mi niño.',
     'gift.empty': 'Enseguidita lo ponemos',
 
     'rsvp.eyebrow': 'Dinos si te apuntas',
@@ -578,7 +578,7 @@ const translations = {
     'story.7.date': 'バスクにも',
     'story.7.title': 'バスクへ帰省',
     'story.7.text':
-      '家族や友達にもう一度会いに、そしてもちろん世界一のピンチョスを味わいに。',
+      'もう一つの故郷に戻り、家族や友人たちと再会し、もちろん世界一美味しいピンチョスを堪能します。',
     'story.8.date': '2026年',
     'story.8.title': '決意',
     'story.8.text':
@@ -612,7 +612,7 @@ const translations = {
     'gift.eyebrow': 'ささやかなお願い',
     'gift.title': 'ご祝儀',
     'gift.intro':
-      '人生には三つの大切なものがあります。健康、お金、そして愛。幸いにも最初の二つは十分にありますので、もし何か贈ってくださるなら、二人の新しい門出のためのご祝儀をいただけたら嬉しいです。本当にありがとうございます！',
+      '人生には三つの大切なものがあります。健康、愛、そしてお金。幸いにも最初の二つは十分にありますので、もし何か贈ってくださるなら、二人の新しい門出のためのご祝儀をいただけたら嬉しいです。本当にありがとうございます！',
     'gift.label': '銀行振込で',
     'gift.howto':
       '下のIBAN番号宛にお振込みいただけます。コピーボタンで番号をコピーできます。',
@@ -623,7 +623,7 @@ const translations = {
     'gift.bank': '銀行名',
     'gift.help':
       'ご不明な点がございましたら、お気軽に直接ご連絡ください。喜んでお手伝いいたします。',
-    'gift.thanks': '心より感謝を込めて 💙',
+    'gift.thanks': '心より感謝を込めて.',
     'gift.empty': '近日公開',
 
     'rsvp.eyebrow': 'ご出欠のご確認',
