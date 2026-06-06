@@ -31,7 +31,7 @@ server replaces them with values from environment variables (see `INJECTIONS` in
 [server.js](server.js)). An unauthenticated visitor is redirected before any of
 this is rendered, so the secrets never leave the server for anonymous requests.
 
-Injected values: `GIFT_IBAN`, `GIFT_HOLDER`, `CEREMONY_NAME`,
+Injected values: `GIFT_IBAN`, `GIFT_BENEFICIARY`, `GIFT_BIC`, `GIFT_BANK`, `CEREMONY_NAME`,
 `CEREMONY_ADDRESS`, `CEREMONY_MAPS_URL`, `CEREMONY_SITE_URL`, `PARTY_NAME`,
 `PARTY_ADDRESS`, `PARTY_MAPS_URL`, `PARTY_SITE_URL`.
 

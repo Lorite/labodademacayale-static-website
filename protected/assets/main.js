@@ -76,7 +76,7 @@
 
 // ---------- Gift / IBAN (value injected server-side from env var) ----------
 (function gift() {
-  // Hide optional rows (holder, BIC) that the server left blank.
+  // Hide optional rows (beneficiary, BIC/SWIFT, bank) that the server left blank.
   document.querySelectorAll('.gift__row[data-optional]').forEach((row) => {
     const dd = row.querySelector('dd');
     if (!dd || dd.textContent.trim() === '') row.hidden = true;

@@ -13,7 +13,7 @@
  *
  * Private details below are injected into the page at request time, so they only
  * reach logged-in guests and never live in the (public) repository:
- *   GIFT_IBAN, GIFT_HOLDER                              wedding gift / bank info
+ *   GIFT_IBAN, GIFT_BENEFICIARY, GIFT_BIC, GIFT_BANK    wedding gift / bank info
  *   CEREMONY_NAME, CEREMONY_ADDRESS,
  *   CEREMONY_MAPS_URL, CEREMONY_SITE_URL                church / ceremony venue
  *   PARTY_NAME, PARTY_ADDRESS,
@@ -46,7 +46,7 @@ const RSVP_ADMIN_KEY = process.env.RSVP_ADMIN_KEY || '';
 // Private values injected into the page (see header) — supplied via env vars,
 // never committed to the repo. Keys match the {{PLACEHOLDER}} tokens in the HTML.
 const INJECTIONS = [
-  'GIFT_IBAN', 'GIFT_HOLDER',
+  'GIFT_IBAN', 'GIFT_BENEFICIARY', 'GIFT_BIC', 'GIFT_BANK',
   'CEREMONY_NAME', 'CEREMONY_ADDRESS', 'CEREMONY_MAPS_URL', 'CEREMONY_SITE_URL',
   'PARTY_NAME', 'PARTY_ADDRESS', 'PARTY_MAPS_URL', 'PARTY_SITE_URL',
 ].reduce((acc, key) => {
