@@ -30,6 +30,7 @@ const translations = {
     'hero.eyebrow': 'Nos casamos',
     'hero.date': '4 de Septiembre de 2026',
     'hero.scroll': 'Desplázate',
+    'hero.cta': 'Ir directo a confirmar',
 
     'count.eyebrow': 'Cuenta atrás',
     'count.title': 'Falta poco para el gran día',
@@ -152,6 +153,7 @@ const translations = {
     'hero.eyebrow': "We're getting married",
     'hero.date': 'September 4, 2026',
     'hero.scroll': 'Scroll down',
+    'hero.cta': 'Go straight to RSVP',
 
     'count.eyebrow': 'Countdown',
     'count.title': 'The big day is almost here',
@@ -275,6 +277,7 @@ const translations = {
     'hero.eyebrow': 'Ezkontzen gara',
     'hero.date': '2026ko irailaren 4a',
     'hero.scroll': 'Behera egin',
+    'hero.cta': 'Joan zuzenean baieztatzera',
 
     'count.eyebrow': 'Atzerako kontaketa',
     'count.title': 'Egun handia gertu dago',
@@ -398,6 +401,7 @@ const translations = {
     'hero.eyebrow': "¡Nos vamo' a casar!",
     'hero.date': '4 de Septiembre de 2026',
     'hero.scroll': "Tira p'abajo",
+    'hero.cta': 'Vamos directo a confirmar, mi niño',
 
     'count.eyebrow': 'La cuenta atrás',
     'count.title': "Ya queda na' pal gran día, chacho",
@@ -521,6 +525,7 @@ const translations = {
     'hero.eyebrow': '結婚します',
     'hero.date': '2026年9月4日',
     'hero.scroll': '下へスクロール',
+    'hero.cta': 'そのまま出席確認へ',
 
     'count.eyebrow': 'カウントダウン',
     'count.title': '大切な日まであと少し',
