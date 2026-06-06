@@ -80,6 +80,7 @@ const translations = {
 
     'gallery.eyebrow': 'Recuerdos',
     'gallery.title': 'Galería',
+    'gallery.captionHint': 'Haz clic en cualquier foto para verla en grande y leer su historia.',
     'gallery.note': 'Las fotos llegarán pronto.',
     'gallery.prev': 'Anterior',
     'gallery.next': 'Siguiente',
@@ -205,6 +206,7 @@ const translations = {
 
     'gallery.eyebrow': 'Memories',
     'gallery.title': 'Gallery',
+    'gallery.captionHint': 'Tap any photo to view it larger and read its story.',
     'gallery.note': 'Photos coming soon.',
     'gallery.prev': 'Previous',
     'gallery.next': 'Next',
@@ -331,6 +333,7 @@ const translations = {
 
     'gallery.eyebrow': 'Oroitzapenak',
     'gallery.title': 'Galeria',
+    'gallery.captionHint': 'Egin klik edozein argazkitan handiago ikusteko eta haren istorioa irakurtzeko.',
     'gallery.note': 'Argazkiak laster iritsiko dira.',
     'gallery.prev': 'Aurrekoa',
     'gallery.next': 'Hurrengoa',
@@ -457,6 +460,7 @@ const translations = {
 
     'gallery.eyebrow': 'Recuerdos',
     'gallery.title': 'Los retratos',
+    'gallery.captionHint': 'Dale clic a cualquier retrato pa verlo grande y leer su historia, mi niño.',
     'gallery.note': 'Las fotos llegan enseguidita, ten paciencia.',
     'gallery.prev': 'Anterior',
     'gallery.next': 'Siguiente',
@@ -583,6 +587,7 @@ const translations = {
 
     'gallery.eyebrow': '思い出',
     'gallery.title': 'ギャラリー',
+    'gallery.captionHint': '写真をクリックすると拡大表示され、その思い出を読むことができます。',
     'gallery.note': '写真は近日公開予定です。',
     'gallery.prev': '前へ',
     'gallery.next': '次へ',

@@ -28,6 +28,8 @@ data/
 *.mov
 pictures/
 photos/
+# Lightbox photo descriptions (personal text — kept off the repo like the photos)
+protected/images/captions.json
 
 # ---- Dependencies & build output ----
 node_modules/

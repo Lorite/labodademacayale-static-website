@@ -158,7 +158,8 @@
   <section class="gallery" id="galeria">
     <p class="section-eyebrow" data-i18n="gallery.eyebrow">Recuerdos</p>
     <h2 class="section-title" data-i18n="gallery.title">Galería</h2>
-    <div class="gallery__grid" data-count="36" data-prefix="images/galeria-" data-ext=".jpg" data-per-page="6"></div>
+    <p class="gallery__hint" data-i18n="gallery.captionHint">Haz clic en cualquier foto para verla en grande y leer su historia.</p>
+    <div class="gallery__grid" data-count="39" data-prefix="images/galeria-" data-ext=".jpg" data-per-page="6"></div>
     <div class="gallery__nav" hidden>
       <button type="button" class="gallery__arrow" data-gallery-prev data-i18n-aria="gallery.prev" aria-label="Anterior">&#8592;</button>
       <span class="gallery__pages" data-gallery-status aria-live="polite"></span>
@@ -329,7 +330,10 @@
   <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true">
     <button type="button" class="lightbox__close" data-lightbox-close data-i18n-aria="gallery.close" aria-label="Cerrar">&times;</button>
     <button type="button" class="lightbox__arrow lightbox__arrow--prev" data-lightbox-prev data-i18n-aria="gallery.prev" aria-label="Anterior">&#8592;</button>
-    <img class="lightbox__img" id="lightbox-img" alt="" />
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" id="lightbox-img" alt="" />
+      <figcaption class="lightbox__caption" id="lightbox-caption" hidden></figcaption>
+    </figure>
     <button type="button" class="lightbox__arrow lightbox__arrow--next" data-lightbox-next data-i18n-aria="gallery.next" aria-label="Siguiente">&#8594;</button>
   </div>
 

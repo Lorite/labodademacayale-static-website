@@ -191,16 +191,42 @@
   // ---- Lightbox ----
   const box = document.getElementById('lightbox');
   const boxImg = document.getElementById('lightbox-img');
+  const caption = document.getElementById('lightbox-caption');
   const closeBtn = document.querySelector('[data-lightbox-close]');
   const lbPrev = document.querySelector('[data-lightbox-prev]');
   const lbNext = document.querySelector('[data-lightbox-next]');
   let order = [];
   let current = 0;
 
+  // Per-photo descriptions live in images/captions.json (file name -> per-language
+  // text). Loaded lazily; a missing file, entry or language simply means no
+  // caption is shown (falling back to Spanish when the chosen language is empty).
+  let captions = null;
+  fetch('images/captions.json', { cache: 'no-cache' })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => { captions = data; updateCaption(); })
+    .catch(() => { /* no captions file — gallery still works */ });
+
+  function captionFor(src) {
+    if (!captions || !src) return '';
+    const entry = captions[src.split('/').pop()];
+    if (!entry) return '';
+    const lang = (window.i18n && window.i18n.lang) || 'es';
+    return entry[lang] || entry.es || entry.en || '';
+  }
+
+  function updateCaption() {
+    if (!caption) return;
+    const text = order.length ? captionFor(order[current]) : '';
+    caption.textContent = text;
+    caption.hidden = !text;
+  }
+
   function show(idx) {
     if (!order.length) return;
     current = (idx + order.length) % order.length; // wrap around
     boxImg.src = order[current];
+    updateCaption();
   }
 
   function openLightbox(src) {
@@ -232,6 +258,8 @@
     if (lbPrev) lbPrev.addEventListener('click', () => show(current - 1));
     if (lbNext) lbNext.addEventListener('click', () => show(current + 1));
     box.addEventListener('click', (e) => { if (e.target === box) closeLightbox(); });
+    // Re-localize the open caption when the visitor switches language.
+    window.addEventListener('languagechanged', () => { if (!box.hidden) updateCaption(); });
   }
 })();
 
