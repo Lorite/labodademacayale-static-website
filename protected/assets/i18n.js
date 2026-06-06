@@ -55,13 +55,21 @@ const translations = {
     'story.4.title': 'Amor a distancia',
     'story.4.text':
       'Durante el año siguiente, Maca se quedó en Japón trabajando duro en su máster mientras Alejandro empezaba a establecerse en Dinamarca. Estuvimos saliendo a distancia (más o menos) durante diez meses.',
-    'story.5.date': '2023',
+    'story.5.date': '2023 – hoy',
     'story.5.title': 'Juntos en Dinamarca',
     'story.5.text':
       'Después, Maca se mudó a Dinamarca. Hemos vivido en Aarhus, Odense y Copenhague, y ya llevamos tres años viviendo juntos aquí.',
-    'story.6.date': '2026',
-    'story.6.title': 'Damos el paso',
+    'story.6.date': 'Siempre que podemos',
+    'story.6.title': 'De vuelta a Gran Canaria',
     'story.6.text':
+      'Volvemos a casa para ver a la familia y a los amigos, y de paso disfrutar del mejor clima del mundo.',
+    'story.7.date': 'Y también a Euskadi',
+    'story.7.title': 'Escapada a Euskadi',
+    'story.7.text':
+      'Más familia, más amigos y, por supuesto, los mejores pintxos del mundo.',
+    'story.8.date': '2026',
+    'story.8.title': 'Damos el paso',
+    'story.8.text':
       'Por fin decidimos dar el paso juntos… ¡Esperamos que os haga tanta ilusión como a nosotros!',
 
     'about.eyebrow': 'Los novios',
@@ -161,13 +169,21 @@ const translations = {
     'story.4.title': 'Long-distance love',
     'story.4.text':
       "Over the following year, Maca stayed in Japan working hard on her master's while Alejandro began settling in Denmark. We dated long-distance (more or less) for ten months.",
-    'story.5.date': '2023',
+    'story.5.date': '2023 – now',
     'story.5.title': 'Together in Denmark',
     'story.5.text':
       'Then Maca moved to Denmark. We have lived in Aarhus, Odense and Copenhagen, and we have now been living together here for three years.',
-    'story.6.date': '2026',
-    'story.6.title': 'Taking the leap',
+    'story.6.date': 'Whenever we can',
+    'story.6.title': 'Back to Gran Canaria',
     'story.6.text':
+      'Coming home to see family and friends — and soaking up the best weather in the world.',
+    'story.7.date': 'And to Euskadi too',
+    'story.7.title': 'A trip to Euskadi',
+    'story.7.text':
+      'More family, more friends and, of course, the best pintxos in the world.',
+    'story.8.date': '2026',
+    'story.8.title': 'Taking the leap',
+    'story.8.text':
       'At last we decided to take the leap together… We hope it makes you as excited as it makes us!',
 
     'about.eyebrow': 'The couple',
@@ -268,13 +284,21 @@ const translations = {
     'story.4.title': 'Urrutiko maitasuna',
     'story.4.text':
       'Hurrengo urtean, Maca Japonian geratu zen bere masterrean gogor lanean, eta Alejandro Danimarkan kokatzen hasi zen. Hamar hilabetez urrutitik ibili ginen (gutxi gorabehera).',
-    'story.5.date': '2023',
+    'story.5.date': '2023 – gaur arte',
     'story.5.title': 'Elkarrekin Danimarkan',
     'story.5.text':
       'Gero, Maca Danimarkara joan zen bizitzera. Aarhus, Odense eta Kopenhagen bizi izan gara, eta hiru urte daramatzagu hemen elkarrekin bizitzen.',
-    'story.6.date': '2026',
-    'story.6.title': 'Pausoa ematen',
+    'story.6.date': 'Ahal dugun bakoitzean',
+    'story.6.title': 'Gran Canariara itzulera',
     'story.6.text':
+      'Etxera itzultzen gara familia eta lagunak ikustera, eta munduko eguraldirik onenaz gozatzera.',
+    'story.7.date': 'Euskadira ere bai',
+    'story.7.title': 'Euskadira ihesaldia',
+    'story.7.text':
+      'Familia gehiago, lagun gehiago eta, jakina, munduko pintxorik onenak.',
+    'story.8.date': '2026',
+    'story.8.title': 'Pausoa ematen',
+    'story.8.text':
       'Azkenean, pausoa elkarrekin ematea erabaki dugu… Espero dugu zuei guri adina ilusio egitea!',
 
     'about.eyebrow': 'Ezkongaiak',
@@ -375,13 +399,21 @@ const translations = {
     'story.4.title': 'Amor a distancia',
     'story.4.text':
       'Al año siguiente, Maca se quedó en Japón dándole duro al máster mientras Alejandro empezaba a asentarse en Dinamarca. Diez meses estuvimos saliendo a distancia (más o menos, chacho).',
-    'story.5.date': '2023',
+    'story.5.date': '2023 – hoy',
     'story.5.title': 'Juntos en Dinamarca',
     'story.5.text':
       "Después Maca se vino pa' Dinamarca. Hemos vivío en Aarhus, Odense y Copenhague, y ya llevamos tres añitos viviendo juntos aquí.",
-    'story.6.date': '2026',
-    'story.6.title': 'Damos el paso',
+    'story.6.date': 'Cada vez que podemos',
+    'story.6.title': 'De vuelta a Gran Canaria',
     'story.6.text':
+      'Nos vamos pa casa a ver a la familia y a los amigos, y a disfrutar del mejor tiempo del mundo, mi niño.',
+    'story.7.date': 'Y también pa Euskadi',
+    'story.7.title': 'Escapadita a Euskadi',
+    'story.7.text':
+      'Más familia, más amigos y, cómo no, los mejores pintxos del mundo, chacho.',
+    'story.8.date': '2026',
+    'story.8.title': 'Damos el paso',
+    'story.8.text':
       '¡Y al final nos decidimos a dar el paso juntos… Esperamos que les haga tanta ilusión como a nosotros, mi niño!',
 
     'about.eyebrow': 'Los novios',
@@ -482,13 +514,21 @@ const translations = {
     'story.4.title': '遠距離恋愛',
     'story.4.text':
       'その後の一年間、マカは日本に残って修士課程に励み、アレハンドロはデンマークで生活を始めました。十か月ほど、遠距離で（だいたい）付き合っていました。',
-    'story.5.date': '2023年',
+    'story.5.date': '2023年〜現在',
     'story.5.title': 'デンマークで一緒に',
     'story.5.text':
       'そしてマカがデンマークへ。オーフス、オーデンセ、コペンハーゲンと暮らし、ここで一緒に暮らして三年になります。',
-    'story.6.date': '2026年',
-    'story.6.title': '決意',
+    'story.6.date': '帰れるときはいつでも',
+    'story.6.title': 'グラン・カナリアへ帰省',
     'story.6.text':
+      '家族や友達に会いに帰省して、世界一の気候も満喫します。',
+    'story.7.date': 'バスクにも',
+    'story.7.title': 'バスクへの旅',
+    'story.7.text':
+      '家族や友達にもう一度会いに、そしてもちろん世界一のピンチョスを味わいに。',
+    'story.8.date': '2026年',
+    'story.8.title': '決意',
+    'story.8.text':
       'そしてついに、二人で次の一歩を踏み出すことに決めました…。私たちと同じくらい、皆さまにも喜んでいただけますように！',
 
     'about.eyebrow': '新郎新婦',
