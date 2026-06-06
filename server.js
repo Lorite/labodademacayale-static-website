@@ -390,6 +390,45 @@ function headCount(record) {
   return 1 + partyInfo(record).guests;
 }
 
+// Fixed, non-secret event facts for the guest confirmation email. Venue NAMES
+// and ADDRESSES come from env vars (INJECTIONS); only the date and start times
+// live here. Keep these in sync with the schedule in protected/index.html.
+const EVENT_DATE = { es: 'Viernes, 4 de Septiembre de 2026', en: 'Friday, September 4, 2026' };
+const CEREMONY_TIME = '18:00';
+const CELEBRATION_TIME = '19:30';
+
+// Localized "event details" block (date, ceremony, celebration) for the guest
+// email. A venue row is omitted when its name/address env vars are unset.
+function buildEventDetails(en) {
+  const L = en
+    ? { title: 'Event details', date: 'Date', ceremony: 'Ceremony', celebration: 'Celebration', at: 'at', from: 'from', map: 'map' }
+    : { title: 'Detalles del evento', date: 'Fecha', ceremony: 'Ceremonia', celebration: 'Celebración', at: 'a las', from: 'desde las', map: 'mapa' };
+
+  const rows = [{ label: L.date, value: en ? EVENT_DATE.en : EVENT_DATE.es, url: '' }];
+
+  const ceremonyVenue = [INJECTIONS.CEREMONY_NAME, INJECTIONS.CEREMONY_ADDRESS].filter(Boolean).join(', ');
+  if (ceremonyVenue) {
+    rows.push({ label: L.ceremony, value: L.at + ' ' + CEREMONY_TIME + ' · ' + ceremonyVenue, url: INJECTIONS.CEREMONY_MAPS_URL });
+  }
+  const partyVenue = [INJECTIONS.PARTY_NAME, INJECTIONS.PARTY_ADDRESS].filter(Boolean).join(', ');
+  if (partyVenue) {
+    rows.push({ label: L.celebration, value: L.from + ' ' + CELEBRATION_TIME + ' · ' + partyVenue, url: INJECTIONS.PARTY_MAPS_URL });
+  }
+
+  const text = L.title + ':\n' +
+    rows.map((r) => '  - ' + r.label + ': ' + r.value + (r.url ? ' (' + r.url + ')' : '')).join('\n');
+
+  const html =
+    '<p style="margin:18px 0 4px;color:#7a7363">' + escapeHtml(L.title) + '</p>' +
+    '<ul style="margin:0;padding-left:18px">' +
+    rows.map((r) =>
+      '<li><strong>' + escapeHtml(r.label) + ':</strong> ' + escapeHtml(r.value) +
+      (r.url ? ' (<a href="' + escapeHtml(r.url) + '">' + escapeHtml(L.map) + '</a>)' : '') + '</li>').join('') +
+    '</ul>';
+
+  return { text, html };
+}
+
 // Notification sent to the couple (CONTACT_EMAIL) for every reply. Always in
 // Spanish — it is read by Maca & Ale, not the guests.
 function buildNotificationEmail(record) {
@@ -481,10 +520,17 @@ function buildGuestEmail(record) {
     if (diet) lines.push(t.diet + ': ' + diet);
   }
 
-  const text =
-    t.hi + '\n\n' + t.body + '\n\n' +
-    t.summary + '\n' + lines.map((l) => '  - ' + l).join('\n') + '\n\n' +
-    t.change + '\n\n' + t.sign + '\nMaca & Ale';
+  // Remind attending guests of the date, location and time.
+  const event = attends ? buildEventDetails(en) : null;
+
+  const blocks = [
+    t.hi,
+    t.body,
+    t.summary + '\n' + lines.map((l) => '  - ' + l).join('\n'),
+  ];
+  if (event) blocks.push(event.text);
+  blocks.push(t.change, t.sign + '\nMaca & Ale');
+  const text = blocks.join('\n\n');
 
   const html =
     '<div style="font-family:system-ui,Segoe UI,Roboto,sans-serif;color:#2b2b2b;max-width:520px">' +
@@ -492,6 +538,7 @@ function buildGuestEmail(record) {
     '<p>' + escapeHtml(t.body) + '</p>' +
     '<p style="margin:16px 0 4px;color:#7a7363">' + escapeHtml(t.summary) + '</p>' +
     '<ul style="margin:0;padding-left:18px">' + lines.map((l) => '<li>' + escapeHtml(l) + '</li>').join('') + '</ul>' +
+    (event ? event.html : '') +
     '<p style="margin-top:16px">' + escapeHtml(t.change) + '</p>' +
     '<p style="margin-top:20px">' + escapeHtml(t.sign) +
     '<br /><strong style="color:#b8943f">Maca &amp; Ale</strong></p></div>';

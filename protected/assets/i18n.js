@@ -28,7 +28,7 @@ const translations = {
     'nav.logoutTitle': 'Cerrar sesión',
 
     'hero.eyebrow': 'Nos casamos',
-    'hero.date': '4 de Septiembre de 2026',
+    'hero.date': 'Viernes, 4 de Septiembre de 2026',
     'hero.scroll': 'Desplázate',
     'hero.cta': 'Ir directo a confirmar',
 
@@ -136,6 +136,8 @@ const translations = {
     'rsvp.sending': 'Enviando…',
     'rsvp.success': '¡Gracias! Hemos recibido tu confirmación.',
     'rsvp.error': 'No se pudo enviar. Inténtalo de nuevo en un momento.',
+
+    'footer.date': 'Viernes · 04 · 09 · 2026',
   },
 
   en: {
@@ -151,7 +153,7 @@ const translations = {
     'nav.logoutTitle': 'Log out',
 
     'hero.eyebrow': "We're getting married",
-    'hero.date': 'September 4, 2026',
+    'hero.date': 'Friday, September 4, 2026',
     'hero.scroll': 'Scroll down',
     'hero.cta': 'Go straight to RSVP',
 
@@ -259,6 +261,8 @@ const translations = {
     'rsvp.sending': 'Sending…',
     'rsvp.success': 'Thank you! We have received your confirmation.',
     'rsvp.error': 'Could not send. Please try again in a moment.',
+
+    'footer.date': 'Friday · 04 · 09 · 2026',
   },
 
   // ---- Euskara / Basque ----
@@ -275,7 +279,7 @@ const translations = {
     'nav.logoutTitle': 'Saioa itxi',
 
     'hero.eyebrow': 'Ezkontzen gara',
-    'hero.date': '2026ko irailaren 4a',
+    'hero.date': '2026ko irailaren 4a, ostirala',
     'hero.scroll': 'Behera egin',
     'hero.cta': 'Joan zuzenean baieztatzera',
 
@@ -383,6 +387,8 @@ const translations = {
     'rsvp.sending': 'Bidaltzen…',
     'rsvp.success': 'Eskerrik asko! Zure baieztapena jaso dugu.',
     'rsvp.error': 'Ezin izan da bidali. Saiatu berriro une batean.',
+
+    'footer.date': 'Ostirala · 04 · 09 · 2026',
   },
 
   // ---- Canario / Canarian Spanish (fun, dialectal) ----
@@ -399,7 +405,7 @@ const translations = {
     'nav.logoutTitle': 'Cerrar la sesión, mi niño',
 
     'hero.eyebrow': "¡Nos vamo' a casar!",
-    'hero.date': '4 de Septiembre de 2026',
+    'hero.date': 'Viernes, 4 de Septiembre de 2026',
     'hero.scroll': "Tira p'abajo",
     'hero.cta': 'Vamos directo a confirmar, mi niño',
 
@@ -507,6 +513,8 @@ const translations = {
     'rsvp.sending': 'Enviando, espérate…',
     'rsvp.success': '¡Gracias, mi niño! Ya te tenemos apuntao.',
     'rsvp.error': 'Ños, no se pudo enviar. Prueba otra vez en un ratito.',
+
+    'footer.date': 'Viernes · 04 · 09 · 2026',
   },
 
   // ---- 日本語 / Japanese ----
@@ -523,7 +531,7 @@ const translations = {
     'nav.logoutTitle': 'ログアウト',
 
     'hero.eyebrow': '結婚します',
-    'hero.date': '2026年9月4日',
+    'hero.date': '2026年9月4日（金）',
     'hero.scroll': '下へスクロール',
     'hero.cta': 'そのまま出席確認へ',
 
@@ -631,6 +639,8 @@ const translations = {
     'rsvp.sending': '送信中…',
     'rsvp.success': 'ありがとうございます！ご出欠を承りました。',
     'rsvp.error': '送信できませんでした。しばらくしてからもう一度お試しください。',
+
+    'footer.date': '金曜日 · 04 · 09 · 2026',
   },
 };
 
