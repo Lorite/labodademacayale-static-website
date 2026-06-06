@@ -267,12 +267,12 @@ section { padding: 96px 24px; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;
-  max-width: 880px;
+  gap: 48px;
+  max-width: 980px;
   margin: 0 auto;
   flex-wrap: wrap;
 }
-.profile { text-align: center; max-width: 300px; }
+.profile { text-align: center; max-width: 420px; }
 .profile__photo {
   width: 220px;
   height: 220px;
@@ -289,7 +289,7 @@ section { padding: 96px 24px; }
   font-size: 32px;
   margin-bottom: 8px;
 }
-.profile p { color: var(--ink-soft); font-size: 15px; }
+.profile p { color: var(--ink-soft); font-size: 15px; text-align: justify; }
 .profile__amp {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
@@ -812,4 +812,7 @@ section { padding: 96px 24px; }
   .vrow__body { padding: 36px 28px; }
   .gallery__grid { grid-template-columns: repeat(2, 1fr); }
   .countdown__grid { grid-template-columns: repeat(2, 1fr); }
+  /* Stack the profiles so the "&" sits between the two descriptions. */
+  .about__grid { flex-direction: column; gap: 24px; }
+  .profile__amp { line-height: 1; }
 }
