@@ -124,6 +124,113 @@
   });
 })();
 
+// ---------- Gallery: lazy fill + pagination + lightbox ----------
+// Cells are generated from a count so the markup stays tiny no matter how
+// many photos there are. Each cell probes its file (images are gitignored);
+// only ones that actually load become real, clickable photos. Bottom arrows
+// page through the grid, and clicking a photo opens it full-screen.
+(function gallery() {
+  const grid = document.querySelector('.gallery__grid');
+  if (!grid) return;
+
+  const count = Number(grid.dataset.count) || 0;
+  const prefix = grid.dataset.prefix || '';
+  const ext = grid.dataset.ext || '.jpg';
+  const perPage = Math.max(1, Number(grid.dataset.perPage) || 6);
+  if (count <= 0 || !prefix) return;
+
+  const note = document.querySelector('.gallery__note');
+  const nav = document.querySelector('.gallery__nav');
+  const status = document.querySelector('[data-gallery-status]');
+  const prevBtn = document.querySelector('[data-gallery-prev]');
+  const nextBtn = document.querySelector('[data-gallery-next]');
+
+  const cells = [];
+  for (let i = 1; i <= count; i++) {
+    const src = `${prefix}${i}${ext}`;
+    const fig = document.createElement('figure');
+    fig.className = 'gallery__cell';
+    fig.dataset.src = src;
+    grid.appendChild(fig);
+    cells.push(fig);
+
+    const probe = new Image();
+    probe.onload = () => {
+      fig.style.backgroundImage = `url("${src}")`;
+      fig.classList.add('is-clickable');
+      fig.addEventListener('click', () => openLightbox(src));
+      if (note) note.hidden = true; // real photos are here, drop "coming soon"
+    };
+    probe.src = src;
+  }
+
+  // ---- Pagination ----
+  const pages = Math.ceil(count / perPage);
+  let page = 0;
+
+  function renderPage() {
+    cells.forEach((cell, idx) => {
+      cell.hidden = Math.floor(idx / perPage) !== page;
+    });
+    if (status) status.textContent = `${page + 1} / ${pages}`;
+    if (prevBtn) prevBtn.disabled = page === 0;
+    if (nextBtn) nextBtn.disabled = page === pages - 1;
+  }
+
+  if (pages > 1 && nav) {
+    nav.hidden = false;
+    if (prevBtn) prevBtn.addEventListener('click', () => { if (page > 0) { page--; renderPage(); } });
+    if (nextBtn) nextBtn.addEventListener('click', () => { if (page < pages - 1) { page++; renderPage(); } });
+  }
+  renderPage();
+
+  // ---- Lightbox ----
+  const box = document.getElementById('lightbox');
+  const boxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('[data-lightbox-close]');
+  const lbPrev = document.querySelector('[data-lightbox-prev]');
+  const lbNext = document.querySelector('[data-lightbox-next]');
+  let order = [];
+  let current = 0;
+
+  function show(idx) {
+    if (!order.length) return;
+    current = (idx + order.length) % order.length; // wrap around
+    boxImg.src = order[current];
+  }
+
+  function openLightbox(src) {
+    if (!box || !boxImg) return;
+    // Navigate over every loaded photo, in gallery order, across all pages.
+    order = cells.filter((c) => c.classList.contains('is-clickable')).map((c) => c.dataset.src);
+    const idx = order.indexOf(src);
+    show(idx < 0 ? 0 : idx);
+    box.hidden = false;
+    requestAnimationFrame(() => box.classList.add('is-open'));
+    document.addEventListener('keydown', onKey);
+  }
+
+  function closeLightbox() {
+    if (!box) return;
+    box.classList.remove('is-open');
+    document.removeEventListener('keydown', onKey);
+    setTimeout(() => { box.hidden = true; boxImg.removeAttribute('src'); }, 300);
+  }
+
+  function onKey(e) {
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') show(current - 1);
+    else if (e.key === 'ArrowRight') show(current + 1);
+  }
+
+  if (box) {
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (lbPrev) lbPrev.addEventListener('click', () => show(current - 1));
+    if (lbNext) lbNext.addEventListener('click', () => show(current + 1));
+    box.addEventListener('click', (e) => { if (e.target === box) closeLightbox(); });
+  }
+})();
+
 // ---------- RSVP (saved server-side at /rsvp; no email client needed) ----------
 (function rsvp() {
   const form = document.getElementById('rsvp-form');

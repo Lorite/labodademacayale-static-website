@@ -80,6 +80,9 @@ const translations = {
     'gallery.eyebrow': 'Recuerdos',
     'gallery.title': 'Galería',
     'gallery.note': 'Las fotos llegarán pronto.',
+    'gallery.prev': 'Anterior',
+    'gallery.next': 'Siguiente',
+    'gallery.close': 'Cerrar',
 
     'when.eyebrow': 'El gran día',
     'when.title': 'Cuándo & Dónde',
@@ -108,7 +111,7 @@ const translations = {
     'rsvp.eyebrow': 'Confirma tu asistencia',
     'rsvp.title': '¿Nos acompañas?',
     'rsvp.intro':
-      'Por favor, confirma antes del <strong>1 de Agosto de 2026</strong>.<br />Si no puedes asistir, también agradecemos que nos lo hagas saber.',
+      'Por favor, confirma <strong>cuanto antes</strong>.<br />Si no puedes asistir, también agradecemos que nos lo hagas saber.',
     'rsvp.cancelNote': 'Si ya has confirmado y necesitas cancelar, por favor avísanos directamente.',
     'rsvp.name': 'Nombre y apellidos',
     'rsvp.myIntol': 'Tus alergias o intolerancias alimentarias',
@@ -194,6 +197,9 @@ const translations = {
     'gallery.eyebrow': 'Memories',
     'gallery.title': 'Gallery',
     'gallery.note': 'Photos coming soon.',
+    'gallery.prev': 'Previous',
+    'gallery.next': 'Next',
+    'gallery.close': 'Close',
 
     'when.eyebrow': 'The big day',
     'when.title': 'When & Where',
@@ -222,7 +228,7 @@ const translations = {
     'rsvp.eyebrow': 'Confirm your attendance',
     'rsvp.title': 'Will you join us?',
     'rsvp.intro':
-      'Please confirm before <strong>August 1, 2026</strong>.<br />If you cannot make it, we would appreciate knowing too.',
+      'Please confirm <strong>as soon as you can</strong>.<br />If you cannot make it, we would appreciate knowing too.',
     'rsvp.cancelNote': 'If you have already confirmed and need to cancel, please let us know directly.',
     'rsvp.name': 'Full name',
     'rsvp.myIntol': 'Your food allergies or intolerances',
@@ -309,6 +315,9 @@ const translations = {
     'gallery.eyebrow': 'Oroitzapenak',
     'gallery.title': 'Galeria',
     'gallery.note': 'Argazkiak laster iritsiko dira.',
+    'gallery.prev': 'Aurrekoa',
+    'gallery.next': 'Hurrengoa',
+    'gallery.close': 'Itxi',
 
     'when.eyebrow': 'Egun handia',
     'when.title': 'Noiz & Non',
@@ -337,7 +346,7 @@ const translations = {
     'rsvp.eyebrow': 'Baieztatu zure etortzea',
     'rsvp.title': 'Gurekin etorriko zara?',
     'rsvp.intro':
-      'Mesedez, baieztatu <strong>2026ko abuztuaren 1a</strong> baino lehen.<br />Ezin baduzu etorri, jakinaraztea ere eskertzen dugu.',
+      'Mesedez, baieztatu <strong>ahalik eta lasterren</strong>.<br />Ezin baduzu etorri, jakinaraztea ere eskertzen dugu.',
     'rsvp.cancelNote': 'Jada baieztatu baduzu eta etortzerik ez baduzu, jakinarazi iezaguzu zuzenean.',
     'rsvp.name': 'Izen-abizenak',
     'rsvp.myIntol': 'Zure elikadura-alergiak edo intolerantziak',
@@ -424,6 +433,9 @@ const translations = {
     'gallery.eyebrow': 'Recuerdos',
     'gallery.title': 'Los retratos',
     'gallery.note': 'Las fotos llegan enseguidita, ten paciencia.',
+    'gallery.prev': 'Anterior',
+    'gallery.next': 'Siguiente',
+    'gallery.close': 'Cerrar',
 
     'when.eyebrow': 'El gran día',
     'when.title': 'Cuándo y Ánde',
@@ -452,7 +464,7 @@ const translations = {
     'rsvp.eyebrow': 'Dinos si te apuntas',
     'rsvp.title': '¿Te vienes, mi niño?',
     'rsvp.intro':
-      "Apúntate antes del <strong>1 de Agosto de 2026</strong>, no te despistes.<br />Y si al final no puedes venir, avísanos igual, que no pasa na'.",
+      "Apúntate <strong>cuanto antes</strong>, no te despistes.<br />Y si al final no puedes venir, avísanos igual, que no pasa na'.",
     'rsvp.cancelNote': 'Si ya te apuntaste y al final no puedes, chacho, avísanos directamente.',
     'rsvp.name': 'Nombre y apellidos',
     'rsvp.myIntol': 'Lo que no puedes comer (alergias o intolerancias)',
@@ -539,6 +551,9 @@ const translations = {
     'gallery.eyebrow': '思い出',
     'gallery.title': 'ギャラリー',
     'gallery.note': '写真は近日公開予定です。',
+    'gallery.prev': '前へ',
+    'gallery.next': '次へ',
+    'gallery.close': '閉じる',
 
     'when.eyebrow': '特別な日',
     'when.title': '日時 & 場所',
@@ -567,7 +582,7 @@ const translations = {
     'rsvp.eyebrow': 'ご出欠のご確認',
     'rsvp.title': 'ご出席いただけますか？',
     'rsvp.intro':
-      '<strong>2026年8月1日</strong>までにご返信ください。<br />ご欠席の場合も、お知らせいただけますと幸いです。',
+      '<strong>お早めに</strong>ご返信ください。<br />ご欠席の場合も、お知らせいただけますと幸いです。',
     'rsvp.cancelNote': 'すでにご返信いただいた後にキャンセルが必要な場合は、直接ご連絡ください。',
     'rsvp.name': 'お名前（姓名）',
     'rsvp.myIntol': 'あなたのアレルギー・食物不耐性',
