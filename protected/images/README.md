@@ -10,7 +10,7 @@ picks them up automatically:
 | `historia-1.jpg`  | Love story — first milestone|
 | `historia-2.jpg`  | Love story — second         |
 | `historia-3.jpg`  | Love story — third          |
-| `maca.jpg`        | About us — Maca             |
+| `maca.jpeg`        | About us — Maca             |
 | `ale.jpg`         | About us — Ale              |
 | `galeria-1..6.jpg`| Gallery grid                |
 
