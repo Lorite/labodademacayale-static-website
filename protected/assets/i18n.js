@@ -77,7 +77,8 @@ const translations = {
     'about.title': 'Sobre nosotros',
     'about.maca':
       'Dicen que el amor es encontrar a esa persona que te complementa, y Maca es exactamente eso para mí. Es el motor de nuestros viajes, la experta catadora de sushi y la voz que llena de alegría y palabras cada rincón de nuestra casa. Admiro su bondad infinita y su capacidad de adaptación; al fin y al cabo, solo por mí cambió el sol por los inviernos de Dinamarca, armada únicamente con unas agujas de crochet. Me paso la vida admirándola, incluso cuando la miro de reojo en el sofá y descubro que se ha vuelto a quedar frita en la primera escena de la película. Es mi persona favorita en el mundo entero y la quiero con locura.',
-    'about.ale': 'Una breve presentación del novio. (Edita este texto.)',
+    'about.ale':
+      'Ale es de esas personas que viven todo con una ilusión imposible de no contagiar. Da igual que sea un día de playa, un videojuego nuevo al que se ha enganchado, un partido del Athletic o un bol de ramen: siempre consigue que cualquier plan parezca más especial. Admiro su forma de ver el mundo: encuentra el lado bueno de la gente, confía antes de juzgar y cuida de los suyos sin esperar nada a cambio. Desde que nos conocimos en Japón, quererle fue la cosa más fácil del mundo. Es una persona que hace mejores a quienes le rodean y convierte cualquier lugar en casa. Entre ramen, playas y películas, he encontrado a quien quiero a mi lado para siempre.',
 
     'gallery.eyebrow': 'Recuerdos',
     'gallery.title': 'Galería',
@@ -204,7 +205,8 @@ const translations = {
     'about.title': 'About us',
     'about.maca':
       "They say love is finding that person who completes you, and Maca is exactly that for me. She's the driving force behind our travels, the expert sushi taster, and the voice that fills every corner of our home with joy and words. I admire her endless kindness and her ability to adapt; after all, just for me she traded the sun for the Danish winters, armed with nothing but a pair of crochet needles. I spend my life admiring her, even when I glance sideways at her on the sofa and find she's dozed off yet again during the very first scene of the film. She's my favourite person in the whole world, and I love her madly.",
-    'about.ale': 'A short introduction to the groom. (Edit this text.)',
+    'about.ale':
+      "Ale is one of those people who lives everything with an enthusiasm that's impossible not to catch. It doesn't matter whether it's a day at the beach, a new video game he's hooked on, an Athletic match, or a bowl of ramen: he always makes any plan feel a little more special. I admire the way he sees the world: he finds the good in people, trusts before he judges, and looks after his loved ones without expecting anything in return. Ever since we met in Japan, loving him has been the easiest thing in the world. He's someone who makes everyone around him better and turns any place into home. Between ramen, beaches and films, I've found the person I want by my side forever.",
 
     'gallery.eyebrow': 'Memories',
     'gallery.title': 'Gallery',
@@ -332,7 +334,8 @@ const translations = {
     'about.title': 'Guri buruz',
     'about.maca':
       'Esaten dute maitasuna zu osatzen zaituen pertsona hori aurkitzea dela, eta Maca da, hain zuzen ere, hori niretzat. Gure bidaien motorra da, sushi dastatzaile aditua eta gure etxeko txoko guztiak alaitasunez eta hitzez betetzen dituen ahotsa. Bere onberatasun mugagabea eta egokitzeko gaitasuna miresten ditut; izan ere, niregatik bakarrik aldatu zuen eguzkia Danimarkako neguengatik, kakorratz batzuekin baino ez zela armatuta. Bizitza osoa ematen dut bera miresten, baita sofan zeharka begiratu eta filmaren lehen eszenan berriz ere lo geratu dela ohartzen naizenean ere. Mundu osoko nire pertsona kuttuna da, eta erotzeraino maite dut.',
-    'about.ale': 'Senargaiaren aurkezpen laburra. (Editatu testu hau.)',
+    'about.ale':
+      'Ale gauza guztiak ilusio kutsakor batez bizitzen dituen pertsona horietakoa da. Berdin dio hondartza-egun bat, harrapatuta daukan bideojoko berri bat, Athleticen partida bat edo ramen-katilu bat izan: beti lortzen du edozein plan bereziago bihurtzea. Mundua ikusteko duen modua miresten dut: jendearen alde ona aurkitzen du, epaitu aurretik fidatzen da, eta bere maiteak zaintzen ditu ezer espero gabe. Japonian elkar ezagutu genuenetik, hura maitatzea munduko gauzarik errazena izan zen. Inguruan dituenak hobeak egiten dituen eta edozein leku etxe bihurtzen duen pertsona bat da. Ramenaren, hondartzen eta filmen artean, betiko nire ondoan nahi dudan pertsona aurkitu dut.',
 
     'gallery.eyebrow': 'Oroitzapenak',
     'gallery.title': 'Galeria',
@@ -460,7 +463,8 @@ const translations = {
     'about.title': 'Sobre nosotros dos',
     'about.maca':
       'Dicen que el amor es encontrar a esa persona que te complementa, y Maca es justo eso pa mí, mi niña. Es el motor de nuestros viajes, la catadora experta de sushi y la voz que llena de alegría y de palabras cada rincón de la casa. Me tiene enamorao su bondad infinita y lo bien que se adapta a to; al fin y al cabo, solo por mí cambió el sol por los inviernos de Dinamarca, armada nada más que con unas agujas de crochet. Me paso la vida admirándola, hasta cuando la miro de reojo en el sofá y me la encuentro otra vez frita en la primera escena de la película. Es mi persona favorita del mundo entero y la quiero con locura.',
-    'about.ale': 'Cuatro cositas sobre el novio. (Edita este texto.)',
+    'about.ale':
+      'Ale es de esas personas que viven to con una ilusión que es imposible no pegártela. Da igual que sea un día de playa, un videojuego nuevo al que se ha enganchao, un partido del Athletic o un bol de ramen: siempre consigue que cualquier plan parezca más especial, mi niño. Me tiene enamorá su forma de ver el mundo: le encuentra el lao bueno a la gente, se fía antes de juzgar y cuida de los suyos sin esperar na a cambio. Desde que nos conocimos en Japón, quererlo fue la cosa más fácil del mundo. Es una persona que hace mejores a los que tiene al lao y convierte cualquier sitio en su casa. Entre ramen, playas y películas, he encontrao a quien quiero a mi vera pa siempre.',
 
     'gallery.eyebrow': 'Recuerdos',
     'gallery.title': 'Los retratos',
@@ -588,7 +592,8 @@ const translations = {
     'about.title': '私たちについて',
     'about.maca':
       '愛とは、自分を完璧に補ってくれる人に出会うことだと言いますが、マカはまさに私にとってそういう存在です。私たちの旅の原動力であり、寿司の食通であり、そして家じゅうのすみずみを喜びと言葉で満たしてくれる声でもあります。彼女の限りない優しさと、どんな環境にも順応できる力には、いつも感心させられます。なにしろ、私のためだけに太陽をデンマークの冬と引き換えにし、手にはかぎ針だけを携えてやって来てくれたのですから。私は四六時中、彼女に見惚れています——ソファで横目に見て、また映画の最初のシーンで眠りに落ちている彼女に気づくときでさえも。彼女は世界中で一番大好きな人で、心の底から愛しています。',
-    'about.ale': '新郎の簡単なご紹介。（このテキストを編集してください。）',
+    'about.ale':
+      'アレは、何事にも、周りまで巻き込んでしまうほどのわくわくした気持ちで向き合う、そんな人です。海で過ごす一日でも、新しくハマったゲームでも、アスレティックの試合でも、一杯のラーメンでも——彼にかかれば、どんな予定でも少し特別なものになってしまいます。世界の見方が本当に素敵で、いつも感心させられます。人の良いところを見つけ、決めつける前にまず信じ、見返りを求めずに身近な人たちを大切にします。日本で出会ってからというもの、彼を想うことは世界で一番簡単なことでした。まわりの人をより良くし、どんな場所でも我が家に変えてしまう、そんな人です。ラーメンと海と映画とともに、私はずっとそばにいてほしい人に出会えました。',
 
     'gallery.eyebrow': '思い出',
     'gallery.title': 'ギャラリー',
